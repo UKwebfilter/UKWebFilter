@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article class="edition">
+  <header class="edition-head">
+    <p class="eyebrow">Edition</p>
+    <h1>{{ page.title | escape }}</h1>
+  </header>
+  <div class="edition-body">
+    {{ content }}
+  </div>
+  <p class="edition-permalink"><a href="{{ '/' | relative_url }}">All editions</a></p>
+</article>
