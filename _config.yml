@@ -3,9 +3,9 @@ tagline: Showing how the world's media frames the same story.
 description: A daily edition of the five top UK stories, with a neutral summary of each and a comparison of how outlets worldwide framed it.
 bias_note: "Bias Spread: 1 means near-identical framing across outlets, 10 means sharply divergent framing. It is not a verdict on who is right."
 
-# Project site: https://ukwebfilter.github.io/UKWebFilter/
-url: https://ukwebfilter.github.io
-baseurl: /UKWebFilter
+# Apex custom domain, no subpath: https://natter.tv
+url: https://natter.tv
+baseurl: ""
 
 lang: en
 timezone: Europe/London
