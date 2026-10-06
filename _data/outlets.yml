@@ -183,3 +183,38 @@
   logo: folha.png
   hosts:
     - folha.uol.com.br
+
+- id: abc
+  name: ABC News
+  context: US, commercial
+  group: International
+  standing: true
+  letter: A
+  color: "#111111"
+  logo: abc.png
+  hosts:
+    - abcnews.com
+    - abcnews.go.com
+
+- id: france24
+  name: France 24
+  context: France, state-funded
+  group: International
+  standing: true
+  letter: F
+  color: "#e10600"
+  logo: france24.png
+  hosts:
+    - france24.com
+
+- id: cgtn
+  name: CGTN
+  context: China, state-owned
+  group: International
+  standing: true
+  letter: C
+  color: "#c41230"
+  logo: cgtn.png
+  hosts:
+    - cgtn.com
+    - news.cgtn.com
