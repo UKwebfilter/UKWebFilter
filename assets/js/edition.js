@@ -1,7 +1,7 @@
 /* Edition presentation.
    In a "How it was framed" list, "Focus n/10" or "Focus n" becomes a heat pill.
    "Bias Spread: n/10" and the Bias Spread table column use the same scale:
-   1–3 green, 4–5 yellow, 6–7 orange, 8–10 red. */
+   1–3 red (bad), 4–5 orange, 6–7 yellow, 8–10 green (good). */
 (function () {
   var outlets = [];
   var dataEl = document.getElementById("natter-outlets");
@@ -18,12 +18,13 @@
     return Math.max(0, Math.min(10, score));
   }
 
+  /* Heat scale: low = bad (red), high = good (green). */
   function heatClass(score) {
     var n = clampScore(score);
-    if (n <= 3) return "heat-1";
-    if (n <= 5) return "heat-2";
-    if (n <= 7) return "heat-3";
-    return "heat-4";
+    if (n <= 3) return "heat-4";
+    if (n <= 5) return "heat-3";
+    if (n <= 7) return "heat-2";
+    return "heat-1";
   }
 
   function chip(score, label) {
