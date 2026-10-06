@@ -1,0 +1,37 @@
+---
+layout: default
+title: Unbiased News Feed
+---
+
+{% assign latest = site.posts.first %}
+
+{% if latest %}
+<article class="edition">
+  <header class="edition-head">
+    <p class="eyebrow">Latest edition</p>
+    <h1>{{ latest.title | escape }}</h1>
+  </header>
+  <div class="edition-body">
+    {{ latest.content }}
+  </div>
+  <p class="edition-permalink"><a href="{{ latest.url | relative_url }}">Permanent link for this edition</a></p>
+</article>
+{% else %}
+<p class="empty">No editions have been published yet.</p>
+{% endif %}
+
+<section class="archive" aria-labelledby="archive-heading">
+  <h2 id="archive-heading">Archive</h2>
+  {% if site.posts.size == 0 %}
+    <p class="empty">Past editions will be listed here.</p>
+  {% else %}
+    <ol>
+      {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B %Y" }}</time>
+      </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+</section>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.date %}
+    {% assign edition_date = page.date | date: "%-d %B %Y" %}
+    {% assign page_title = edition_date | append: " · " | append: site.title %}
+    {% assign page_description = "The five top UK stories for " | append: edition_date | append: ", and how outlets worldwide framed each one." %}
+  {% elsif page.url == "/" or page.url == "/index.html" %}
+    {% assign page_title = site.title %}
+    {% assign page_description = site.description %}
+  {% else %}
+    {% assign page_title = page.title | append: " · " | append: site.title %}
+    {% assign page_description = site.description %}
+  {% endif %}
+  <title>{{ page_title | escape }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <meta name="theme-color" content="#1c1915">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% feed_meta %}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  {% include header.html %}
+  <main id="main">
+    <div class="wrap">
+      {{ content }}
+    </div>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/edition.js' | relative_url }}"></script>
+</body>
+</html>
