@@ -19,7 +19,7 @@ date: 2026-10-07
 ---
 ```
 
-Write the edition under that front matter. Leave out a top-level `#` heading; the title above is the page heading. Commit the file to `main`. The newest file becomes the homepage, and every edition stays up at `/YYYY/MM/DD/`.
+Write the edition under that front matter. Leave out a top-level `#` heading; the title above is the page heading. In the ranking table, head the second column `UK prominence`, not Score. Commit the file to `main`. The newest file becomes the homepage, and every edition stays up at `/YYYY/MM/DD/`.
 
 ## GitHub Pages
 
