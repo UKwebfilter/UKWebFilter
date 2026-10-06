@@ -6,21 +6,32 @@
   {% if page.date %}
     {% assign edition_date = page.date | date: "%-d %B %Y" %}
     {% assign page_title = edition_date | append: " · " | append: site.title %}
-    {% assign page_description = "The five top UK stories for " | append: edition_date | append: ", and how outlets worldwide framed each one." %}
+    {% assign page_description = "How the world reported the UK’s top stories on " | append: edition_date | append: "." %}
   {% elsif page.url == "/" or page.url == "/index.html" %}
     {% assign page_title = site.title %}
     {% assign page_description = site.description %}
   {% else %}
     {% assign page_title = page.title | append: " · " | append: site.title %}
-    {% assign page_description = site.description %}
+    {% if page.description %}
+      {% assign page_description = page.description %}
+    {% else %}
+      {% assign page_description = site.description %}
+    {% endif %}
   {% endif %}
   <title>{{ page_title | escape }}</title>
   <meta name="description" content="{{ page_description | escape }}">
-  <meta name="theme-color" content="#1c1915">
+  <meta name="application-name" content="Natter">
+  <meta name="theme-color" content="#8e2f2a">
+  <meta property="og:site_name" content="Natter">
   <meta property="og:title" content="{{ page_title | escape }}">
   <meta property="og:description" content="{{ page_description | escape }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page_title | escape }}">
+  <meta name="twitter:description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {% feed_meta %}
@@ -34,6 +45,19 @@
     </div>
   </main>
   {% include footer.html %}
+  <script id="natter-outlets" type="application/json">
+  [
+    {% for outlet in site.data.outlets %}
+    {
+      "name": {{ outlet.name | jsonify }},
+      "hosts": {{ outlet.hosts | jsonify }},
+      "letter": {{ outlet.letter | jsonify }},
+      "color": {{ outlet.color | jsonify }},
+      "logo": {{ outlet.logo | prepend: "/assets/logos/" | relative_url | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  </script>
   <script src="{{ '/assets/js/edition.js' | relative_url }}"></script>
 </body>
 </html>

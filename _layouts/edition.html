@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<article class="edition">
+<article class="edition" id="edition">
   <header class="edition-head">
     <p class="eyebrow">Edition</p>
-    <h1>{{ page.title | escape }}</h1>
+    <h1>{{ page.date | date: "%-d %B %Y" }}</h1>
   </header>
   <div class="edition-body">
     {{ content }}
+    {% include share.html url=page.url date=page.date %}
   </div>
-  <p class="edition-permalink"><a href="{{ '/' | relative_url }}">All editions</a></p>
 </article>

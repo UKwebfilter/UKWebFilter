@@ -1,0 +1,220 @@
+# Standing panel. UK outlets feed the prominence score. The framing list
+# quotes panel outlets that covered the story. Logos are local favicons.
+- id: bbc
+  name: BBC
+  context: UK, public-service
+  group: United Kingdom
+  standing: true
+  letter: B
+  color: "#111111"
+  logo: bbc.png
+  hosts:
+    - bbc.co.uk
+    - bbc.com
+
+- id: sky
+  name: Sky News
+  context: UK, commercial
+  group: United Kingdom
+  standing: true
+  letter: S
+  color: "#c41230"
+  logo: sky.png
+  hosts:
+    - news.sky.com
+    - sky.com
+
+- id: channel4
+  name: Channel 4
+  context: UK, public-service
+  group: United Kingdom
+  standing: true
+  letter: "4"
+  color: "#1a1a1a"
+  logo: channel4.png
+  hosts:
+    - channel4.com
+
+- id: guardian
+  name: The Guardian
+  context: UK, commercial
+  group: United Kingdom
+  standing: true
+  letter: G
+  color: "#052962"
+  logo: guardian.png
+  hosts:
+    - theguardian.com
+    - guardian.co.uk
+
+- id: telegraph
+  name: The Telegraph
+  context: UK, commercial
+  group: United Kingdom
+  standing: true
+  letter: T
+  color: "#1a1a1a"
+  logo: telegraph.png
+  hosts:
+    - telegraph.co.uk
+
+- id: times
+  name: The Times
+  context: UK, commercial
+  group: United Kingdom
+  standing: true
+  letter: T
+  color: "#111111"
+  logo: times.png
+  hosts:
+    - thetimes.com
+    - thetimes.co.uk
+
+- id: mail
+  name: Daily Mail
+  context: UK, commercial
+  group: United Kingdom
+  standing: true
+  letter: M
+  color: "#004db3"
+  logo: mail.png
+  hosts:
+    - dailymail.com
+    - dailymail.co.uk
+
+- id: sun
+  name: The Sun
+  context: UK, tabloid
+  group: United Kingdom
+  standing: true
+  letter: S
+  color: "#ce0000"
+  logo: sun.png
+  hosts:
+    - thesun.co.uk
+    - thesun.com
+
+- id: cnn
+  name: CNN
+  context: US, commercial
+  group: International
+  standing: true
+  letter: C
+  color: "#cc0000"
+  logo: cnn.png
+  hosts:
+    - cnn.com
+
+- id: fox
+  name: Fox News
+  context: US, commercial
+  group: International
+  standing: true
+  letter: F
+  color: "#003366"
+  logo: fox.png
+  hosts:
+    - foxnews.com
+
+- id: aljazeera
+  name: Al Jazeera
+  context: Qatar, state-funded
+  group: International
+  standing: true
+  letter: A
+  color: "#f18500"
+  logo: aljazeera.png
+  hosts:
+    - aljazeera.com
+
+- id: xinhua
+  name: Xinhua
+  context: China, state news agency
+  group: International
+  standing: true
+  letter: X
+  color: "#c00000"
+  logo: xinhua.png
+  hosts:
+    - news.cn
+    - xinhuanet.com
+
+- id: tehran
+  name: Tehran Times
+  context: Iran, government-linked
+  group: International
+  standing: true
+  letter: T
+  color: "#8e2f2a"
+  logo: tehran.png
+  hosts:
+    - tehrantimes.com
+
+- id: ria
+  name: RIA Novosti
+  context: Russia, state-owned
+  group: International
+  standing: true
+  letter: R
+  color: "#1a3d7c"
+  logo: ria.png
+  hosts:
+    - ria.ru
+
+- id: ynet
+  name: Ynet
+  context: Israel, commercial
+  group: International
+  standing: true
+  letter: Y
+  color: "#c41230"
+  logo: ynet.png
+  hosts:
+    - ynetnews.com
+    - ynet.co.il
+
+- id: folha
+  name: Folha de S.Paulo
+  context: Brazil, commercial
+  group: International
+  standing: true
+  letter: F
+  color: "#111111"
+  logo: folha.png
+  hosts:
+    - folha.uol.com.br
+
+- id: abc
+  name: ABC News
+  context: US, commercial
+  group: International
+  standing: true
+  letter: A
+  color: "#111111"
+  logo: abc.png
+  hosts:
+    - abcnews.com
+    - abcnews.go.com
+
+- id: france24
+  name: France 24
+  context: France, state-funded
+  group: International
+  standing: true
+  letter: F
+  color: "#e10600"
+  logo: france24.png
+  hosts:
+    - france24.com
+
+- id: cgtn
+  name: CGTN
+  context: China, state-owned
+  group: International
+  standing: true
+  letter: C
+  color: "#c41230"
+  logo: cgtn.png
+  hosts:
+    - cgtn.com
+    - news.cgtn.com

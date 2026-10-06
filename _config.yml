@@ -1,7 +1,14 @@
-title: Unbiased News Feed
-tagline: Showing how the world's media frames the same story.
-description: A daily edition of the five top UK stories, with a neutral summary of each and a comparison of how outlets worldwide framed it.
-bias_note: "Bias Spread: 1 means near-identical framing across outlets, 10 means sharply divergent framing. It is not a verdict on who is right."
+title: Natter
+tagline: "How the world reported today’s UK news"
+description: "How the world reported today’s UK news. A morning edition of the top UK stories, with Bias Spread across outlets and a Focus score for each one."
+
+# Public Buttondown embed URL (free plan). Not a secret and not a paid embed.
+# Replace the placeholder before signup should deliver mail:
+#   newsletter_action: "https://buttondown.com/api/emails/embed-subscribe/YOUR_USERNAME"
+# This repo builds with the github-pages gem, which runs in safe mode, so the
+# URL cannot be injected from the environment at build time. Put it here.
+# A gitignored _config.local.yml can override it for a local build; see README.
+newsletter_action: "#"
 
 # Apex custom domain, no subpath: https://natter.tv
 url: https://natter.tv

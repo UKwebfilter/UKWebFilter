@@ -1,0 +1,21 @@
+{% assign panel = site.data.outlets | where: "standing", true | group_by: "group" %}
+{% for group in panel %}
+<h3>{{ group.name | escape }}</h3>
+<ul class="panel-list">
+  {% for outlet in group.items %}
+  <li>
+    <img
+      class="outlet-logo"
+      src="{{ outlet.logo | prepend: '/assets/logos/' | relative_url }}"
+      width="18"
+      height="18"
+      alt=""
+      data-letter="{{ outlet.letter | escape }}"
+      data-color="{{ outlet.color | escape }}"
+    >
+    <span class="panel-name">{{ outlet.name | escape }}</span>
+    <span class="outlet-ctx">({{ outlet.context | escape }})</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
