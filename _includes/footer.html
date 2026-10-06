@@ -1,5 +1,25 @@
+{% assign news_action = site.newsletter_action | default: "#" %}
 <footer class="site-footer">
   <div class="wrap">
-    <p>{{ site.bias_note | escape }}</p>
+    <div class="newsletter" id="newsletter">
+      <h2>Get the morning edition</h2>
+      <p>Five headlines, Bias Spread and Focus scores, free. Powered by a free newsletter service (Buttondown).</p>
+      <form
+        class="newsletter-form embeddable-buttondown-form"
+        action="{{ news_action | escape }}"
+        method="post"
+        {% unless news_action == "#" %}target="_blank"{% endunless %}
+      >
+        <label class="visually-hidden" for="newsletter-email">Email</label>
+        <input id="newsletter-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <input type="hidden" name="embed" value="1">
+        <button type="submit">Subscribe</button>
+        <p class="newsletter-status" role="status" hidden></p>
+      </form>
+    </div>
+    <p class="footer-meta">
+      <a href="{{ '/how-it-works/' | relative_url }}">Scores explained on How it works</a>
+      · Natter is independent and does not take a side on the stories it covers.
+    </p>
   </div>
 </footer>

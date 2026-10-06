@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Unbiased News Feed
+title: Natter
 ---
 
 {% assign latest = site.posts.first %}
 
 {% if latest %}
-<article class="edition">
+<article class="edition" id="edition">
   <header class="edition-head">
     <p class="eyebrow">Latest edition</p>
-    <h1>{{ latest.title | escape }}</h1>
+    <h1>{{ latest.date | date: "%-d %B %Y" }}</h1>
   </header>
   <div class="edition-body">
     {{ latest.content }}
+    {% include share.html url=latest.url date=latest.date %}
   </div>
-  <p class="edition-permalink"><a href="{{ latest.url | relative_url }}">Permanent link for this edition</a></p>
 </article>
 {% else %}
 <p class="empty">No editions have been published yet.</p>
@@ -28,8 +28,7 @@ title: Unbiased News Feed
     <ol>
       {% for post in site.posts %}
       <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B %Y" }}</time>
+        <a href="{{ post.url | relative_url }}">{{ post.date | date: "%-d %B %Y" }}</a>
       </li>
       {% endfor %}
     </ol>

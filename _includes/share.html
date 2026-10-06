@@ -1,0 +1,9 @@
+{% assign share_url = include.url | absolute_url %}
+{% assign share_date = include.date | date: "%-d %B %Y" %}
+{% capture share_text %}Natter, {{ share_date }} — how the world reported today's UK news{% endcapture %}
+{% capture bsky_text %}{{ share_text }} {{ share_url }}{% endcapture %}
+<div class="share-row" aria-label="Share this edition">
+  <button type="button" class="share-copy" data-url="{{ share_url | escape }}">Copy link</button>
+  <a class="share-x" href="https://twitter.com/intent/tweet?text={{ share_text | uri_escape }}&amp;url={{ share_url | uri_escape }}" target="_blank" rel="noopener noreferrer">Share on X</a>
+  <a class="share-bsky" href="https://bsky.app/intent/compose?text={{ bsky_text | uri_escape }}" target="_blank" rel="noopener noreferrer">Share on Bluesky</a>
+</div>

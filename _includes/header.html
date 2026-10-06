@@ -1,6 +1,30 @@
+{% assign nav_current = "" %}
+{% if page.url == "/trends/" or page.url == "/trends/index.html" %}
+  {% assign nav_current = "trends" %}
+{% elsif page.url == "/how-it-works/" or page.url == "/how-it-works/index.html" %}
+  {% assign nav_current = "how" %}
+{% elsif page.url == "/" or page.url == "/index.html" or page.date %}
+  {% assign nav_current = "today" %}
+{% endif %}
 <header class="masthead">
   <div class="wrap masthead-inner">
-    <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
-    <p class="tagline">{{ site.tagline | escape }}</p>
+    <div>
+      <a class="wordmark" href="{{ '/' | relative_url }}">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#8e2f2a"/>
+          <circle cx="10" cy="16" r="3" fill="#fffcf7"/>
+          <circle cx="16" cy="16" r="3" fill="#fffcf7" opacity="0.85"/>
+          <circle cx="22" cy="16" r="3" fill="#fffcf7" opacity="0.7"/>
+        </svg>
+        {{ site.title | escape }}
+      </a>
+      <p class="tagline">{{ site.tagline | escape }}</p>
+      <nav class="nav" aria-label="Site">
+        <a href="{{ '/' | relative_url }}"{% if nav_current == "today" %} aria-current="page"{% endif %}>Today</a>
+        <a href="{{ '/trends/' | relative_url }}"{% if nav_current == "trends" %} aria-current="page"{% endif %}>Trends</a>
+        <a href="{{ '/how-it-works/' | relative_url }}"{% if nav_current == "how" %} aria-current="page"{% endif %}>How it works</a>
+        <a href="#newsletter">Email</a>
+      </nav>
+    </div>
   </div>
 </header>
