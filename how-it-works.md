@@ -5,11 +5,21 @@ permalink: /how-it-works/
 description: How Natter scores UK prominence, Bias Spread, and Focus, and which outlets sit on the standing panel.
 ---
 
-Natter lines up the morning’s UK stories and how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
+Natter lines up the morning’s stories in two blocks — the UK top five, then up to five world stories that also have UK coverage — and how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
+
+## Two sections
+
+**UK** ranks the day’s top five British stories by prominence across the UK outlets on the panel.
+
+**World** adds up to five top international stories that UK outlets also covered. A story that would sit in both lists stays in UK only, so the world block never repeats it.
+
+Each story name in the ranking table jumps to that story lower on the page.
 
 ## UK prominence
 
-The ranking table orders stories by how widely they led the British outlets on the panel. An outlet’s lead story is worth 2 points. A story in that outlet’s top three is worth 1. The points are added across the UK outlets. A high number means the story dominated those front pages.
+The UK ranking table orders stories by how widely they led the British outlets on the panel. An outlet’s lead story is worth 2 points. A story in that outlet’s top three is worth 1. The points are added across the UK outlets. A high number means the story dominated those front pages.
+
+World stories are chosen by how widely they led major international coverage, then kept only when UK outlets also reported them.
 
 ## Bias Spread
 
@@ -41,6 +51,6 @@ Each outlet line carries a short Focus reason under the framing comment, explain
 
 ## Standing outlet panel
 
-Every edition is scored against the same panel, so one morning can be compared with the next. UK prominence uses the British outlets. The framing list only names the panel outlets that actually covered the story that day.
+Every edition is scored against the same panel, so one morning can be compared with the next. UK prominence uses the British outlets. Framing lists for both UK and World stories check the full international panel and only name the outlets that actually covered the story that day.
 
 {% include panel.html %}
