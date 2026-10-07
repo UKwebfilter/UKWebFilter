@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Bias trends
+title: Outlet Focus
+eyebrow: Trends
 permalink: /trends/
-description: Average Bias Spread across published Natter editions.
+description: Average and latest Focus by outlet across published Natter editions.
 ---
 
-{% include trend-chart.html %}
+{% include outlet-focus.html %}
