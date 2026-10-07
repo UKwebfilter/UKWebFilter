@@ -157,6 +157,15 @@
 
   function logoBefore(anchor, outlet) {
     if (anchor.previousElementSibling && anchor.previousElementSibling.classList.contains("outlet-logo")) return;
+    if (!outlet.logo) {
+      var mark = document.createElement("span");
+      mark.className = "outlet-logo outlet-letter";
+      mark.style.background = outlet.color || "#3f3b34";
+      mark.textContent = outlet.letter || "?";
+      mark.setAttribute("aria-hidden", "true");
+      anchor.parentNode.insertBefore(mark, anchor);
+      return;
+    }
     var img = document.createElement("img");
     img.className = "outlet-logo";
     img.width = 18;
