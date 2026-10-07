@@ -226,9 +226,7 @@
     return -1;
   }
 
-  function enhanceTable(root) {
-    var table = root.querySelector("table");
-    if (!table) return;
+  function enhanceOneTable(root, table) {
     var wrap = table.parentElement;
     if (!wrap || !wrap.classList.contains("table-wrap")) {
       wrap = document.createElement("div");
@@ -265,13 +263,13 @@
       }
       if (promIndex >= 0 && cells[promIndex] && cells[promIndex].tagName === "TD") {
         cell = cells[promIndex];
+        cell.classList.add("col-prom");
         raw = cell.textContent.replace(/\s+/g, " ").trim();
         value = raw.match(/^(\d+)\s*(?:\/\s*10)?$/);
         if (value && !cell.querySelector(".score-heat")) {
           cell.textContent = "";
           cell.appendChild(chip(parseInt(value[1], 10), String(parseInt(value[1], 10))));
         }
-        cell.classList.add("col-prom");
       }
       for (c = 0; c < cells.length; c++) {
         if (cells[c].tagName === "TH" || cells[c].querySelector(".cell-label") || !headers[c]) continue;
@@ -281,38 +279,58 @@
         cells[c].insertBefore(label, cells[c].firstChild);
       }
     }
+    return wrap;
+  }
 
+  function enhanceTable(root) {
+    var tables = root.querySelectorAll("table");
+    var t, wrap, lastWrap = null;
+    for (t = 0; t < tables.length; t++) {
+      lastWrap = enhanceOneTable(root, tables[t]);
+    }
     var share = root.querySelector(".share-row");
-    if (share && wrap.nextSibling !== share) wrap.after(share);
+    if (share && lastWrap && lastWrap.nextSibling !== share) lastWrap.after(share);
   }
 
   function enhanceJumpLinks(root) {
-    var headings = root.querySelectorAll("h2[id]");
+    var headings = [];
+    var all = root.querySelectorAll("h2[id]");
+    var i, h2;
+    for (i = 0; i < all.length; i++) {
+      h2 = all[i];
+      if (/^\s*\d+\./.test(h2.textContent || "")) headings.push(h2);
+    }
     if (!headings.length) return;
-    var table = root.querySelector("table");
-    if (!table) return;
-    var rows = table.querySelectorAll("tbody tr");
-    var r, storyCell, existing, link, nodes, n, node;
-    for (r = 0; r < rows.length; r++) {
-      if (r >= headings.length) break;
-      storyCell = rows[r].querySelector("td");
-      if (!storyCell) continue;
-      if (storyCell.querySelector("a.story-jump")) continue;
-      existing = storyCell.querySelector('a[href^="#"]');
-      if (existing) {
-        existing.classList.add("story-jump");
-        continue;
+    var tables = root.querySelectorAll("table");
+    var t, rows, r, storyCell, existing, link, nodes, n, node, headingIdx = 0;
+    for (t = 0; t < tables.length; t++) {
+      rows = tables[t].querySelectorAll("tbody tr");
+      for (r = 0; r < rows.length; r++) {
+        if (headingIdx >= headings.length) return;
+        storyCell = rows[r].querySelector("td");
+        if (!storyCell) continue;
+        if (storyCell.querySelector("a.story-jump")) {
+          headingIdx++;
+          continue;
+        }
+        existing = storyCell.querySelector('a[href^="#"]');
+        if (existing) {
+          existing.classList.add("story-jump");
+          headingIdx++;
+          continue;
+        }
+        link = document.createElement("a");
+        link.className = "story-jump";
+        link.href = "#" + headings[headingIdx].id;
+        nodes = Array.prototype.slice.call(storyCell.childNodes);
+        for (n = 0; n < nodes.length; n++) {
+          node = nodes[n];
+          if (node.nodeType === 1 && node.classList && node.classList.contains("cell-label")) continue;
+          link.appendChild(node);
+        }
+        storyCell.appendChild(link);
+        headingIdx++;
       }
-      link = document.createElement("a");
-      link.className = "story-jump";
-      link.href = "#" + headings[r].id;
-      nodes = Array.prototype.slice.call(storyCell.childNodes);
-      for (n = 0; n < nodes.length; n++) {
-        node = nodes[n];
-        if (node.nodeType === 1 && node.classList && node.classList.contains("cell-label")) continue;
-        link.appendChild(node);
-      }
-      storyCell.appendChild(link);
     }
   }
 
