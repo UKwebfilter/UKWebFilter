@@ -10,6 +10,31 @@ title: Natter
   <header class="edition-head">
     <p class="eyebrow">Latest edition</p>
     <h1>{{ latest.date | date: "%-d %B %Y" }}</h1>
+    {% if latest.banner %}
+    <figure class="edition-banner" aria-label="Story collage for this edition">
+      <div class="edition-banner-desktop">
+        <picture>
+          <source srcset="{{ latest.banner | relative_url }}" type="image/webp">
+          {% if latest.banner_fallback %}
+          <img src="{{ latest.banner_fallback | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
+          {% else %}
+          <img src="{{ latest.banner | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
+          {% endif %}
+        </picture>
+      </div>
+      {% if latest.banner_tiles and latest.banner_tiles.size > 0 %}
+      <div class="edition-banner-mobile">
+        <div class="edition-banner-scroll-wrap">
+          <div class="edition-banner-scroll" id="edition-banner-scroll" role="list" aria-label="Story images, swipe horizontally">
+            {% for tile in latest.banner_tiles %}
+            <img class="edition-banner-tile" src="{{ tile | relative_url }}" alt="" width="308" height="272" loading="lazy" decoding="async" role="listitem">
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </figure>
+    {% endif %}
   </header>
   <div class="edition-body">
     {{ latest.content }}
