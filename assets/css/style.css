@@ -1019,3 +1019,139 @@ img.outlet-logo {
   overflow: visible;
   flex: none;
 }
+
+
+/* ===== Edition collage banner (2026-10-07e) =====
+   Desktop: fixed 1200×280 2×5 asset, cover-crop (no stretch), wider than
+   reading column (.wrap ~46rem) via full-bleed of content shell (~75rem).
+   Mobile: 1×10 horizontal scroll-snap strip; labels off; ~3 tiles + peek.
+   Reading column is NOT widened. */
+.edition-head:has(.edition-banner) h1 {
+  margin-bottom: 0.4rem;
+}
+
+.edition-banner {
+  margin: 0.35rem 0 1.15rem;
+  padding: 0;
+  border: 0;
+}
+
+/* Break out of .wrap so banner can sit wider than the article column */
+.edition-banner-desktop {
+  width: min(100vw - 2rem, 75rem);
+  max-width: none;
+  margin-inline: calc(50% - min(50vw - 1rem, 37.5rem));
+}
+
+.edition-banner-desktop picture,
+.edition-banner-desktop img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 280;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  background: #121216;
+}
+
+.edition-banner-mobile {
+  display: none;
+}
+
+.edition-banner-scroll-wrap {
+  position: relative;
+  background: #121216;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.edition-banner-scroll {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af transparent;
+  padding: 2px;
+  background: #121216;
+}
+
+.edition-banner-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.edition-banner-scroll::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 2px;
+}
+
+.edition-banner-tile {
+  flex: 0 0 128px;
+  width: 128px;
+  height: 116px;
+  object-fit: cover;
+  object-position: center;
+  scroll-snap-align: start;
+  display: block;
+  background: #1a1a1e;
+}
+
+/* Right-edge fade hints more tiles */
+.edition-banner-scroll-wrap::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 36px;
+  background: linear-gradient(to right, transparent, rgba(18, 18, 22, 0.72));
+  border-radius: 0 2px 2px 0;
+  z-index: 1;
+  transition: opacity 0.2s;
+}
+
+.edition-banner-scroll-wrap.is-at-end::after {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .edition-banner-desktop {
+    display: none;
+  }
+
+  .edition-banner-mobile {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .edition-banner {
+    margin: 0.3rem 0 0.95rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .edition-banner-mobile {
+    display: none !important;
+  }
+}
+
+@media print {
+  .edition-banner-mobile {
+    display: none !important;
+  }
+
+  .edition-banner-desktop {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
