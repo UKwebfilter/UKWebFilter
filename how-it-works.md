@@ -2,7 +2,7 @@
 layout: page
 title: How it works
 permalink: /how-it-works/
-description: How Natter scores UK prominence, Bias Spread, and Focus, and which outlets sit on the standing panel.
+description: How Natter scores UK prominence, Neutrality, and Focus, and which outlets sit on the standing panel.
 ---
 
 Natter lines up the morning’s stories in two blocks — the UK top five, then up to five world stories that also have UK coverage — and how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
@@ -21,9 +21,9 @@ The UK ranking table orders stories by how widely they led the British outlets o
 
 World stories are ordered by how widely they led major international coverage, and only when UK outlets also reported them.
 
-## Bias Spread
+## Neutrality
 
-Bias Spread is a score from 1 to 10 for the story as a whole. A 10 means near-identical framing across outlets. A 1 means sharply clashing framing. It is not a verdict on which outlet is right.
+Neutrality is a score from 1 to 10 for the story as a whole. High scores (8–10) mean little lean and even coverage across outlets. Low scores (1–3) mean heavily leaned or sharply split framing. It is not a verdict on which outlet is right.
 
 The number appears as a heat chip in the ranking table and again under each story. Cool greens are high (good). Hot reds are low (bad).
 
