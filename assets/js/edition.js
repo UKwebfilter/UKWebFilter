@@ -245,7 +245,30 @@
     li.appendChild(row);
   }
 
-  function enhanceLists(root) {
+  
+  function promoteNestedNeutrality(ul) {
+    var items = ul.querySelectorAll(":scope > li");
+    var i, li, nodes, n, text, p, next;
+    for (i = 0; i < items.length; i++) {
+      li = items[i];
+      nodes = Array.prototype.slice.call(li.childNodes);
+      for (n = 0; n < nodes.length; n++) {
+        next = nodes[n];
+        if (next.nodeType !== 1) continue;
+        text = (next.textContent || "").replace(/^\s+/, "");
+        if (!/^(?:Neutrality|Bias Spread):\s*\d+/i.test(text)) continue;
+        p = next;
+        if (p.tagName !== "P") {
+          p = document.createElement("p");
+          while (next.firstChild) p.appendChild(next.firstChild);
+          next.parentNode.replaceChild(p, next);
+        }
+        ul.parentNode.insertBefore(p, ul.nextSibling);
+      }
+    }
+  }
+
+function enhanceLists(root) {
     var lists = root.querySelectorAll("ul");
     var u, ul, prev, heading, label, anchors, a, outlet, items, li, walker, nodes, n;
     for (u = 0; u < lists.length; u++) {
@@ -255,6 +278,7 @@
       label = heading ? heading.textContent.replace(/\s+/g, " ").trim().toLowerCase() : "";
       if (label.indexOf("how it was framed") === -1) continue;
       ul.classList.add("framed-list");
+      promoteNestedNeutrality(ul);
       anchors = ul.querySelectorAll("a");
       for (a = 0; a < anchors.length; a++) {
         outlet = findOutlet(anchors[a]);
