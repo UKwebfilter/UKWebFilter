@@ -33,7 +33,7 @@
   <meta name="twitter:description" content="{{ page_description | escape }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261007i">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261007j">
   {% feed_meta %}
 </head>
 <body>
@@ -53,11 +53,11 @@
       "hosts": {{ outlet.hosts | jsonify }},
       "letter": {{ outlet.letter | jsonify }},
       "color": {{ outlet.color | jsonify }},
-      "logo": {{ outlet.logo | prepend: "/assets/logos/" | relative_url | jsonify }}
+      "logo": {% if outlet.logo %}{{ outlet.logo | prepend: "/assets/logos/" | relative_url | jsonify }}{% else %}null{% endif %}
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ]
   </script>
-  <script src="{{ '/assets/js/edition.js' | relative_url }}?v=20261007i"></script>
+  <script src="{{ '/assets/js/edition.js' | relative_url }}?v=20261007j"></script>
 </body>
 </html>
