@@ -482,4 +482,22 @@
 
   var forms = document.querySelectorAll(".newsletter-form");
   for (b = 0; b < forms.length; b++) bindNewsletter(forms[b]);
+
+  function bindBannerScrollFade(scrollEl) {
+    var wrap = scrollEl.closest(".edition-banner-scroll-wrap");
+    if (!wrap) return;
+    function update() {
+      var max = scrollEl.scrollWidth - scrollEl.clientWidth;
+      if (max <= 2) {
+        wrap.classList.add("is-at-end");
+        return;
+      }
+      wrap.classList.toggle("is-at-end", scrollEl.scrollLeft >= max - 4);
+    }
+    scrollEl.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
+  var bannerScrolls = document.querySelectorAll(".edition-banner-scroll");
+  for (b = 0; b < bannerScrolls.length; b++) bindBannerScrollFade(bannerScrolls[b]);
 })();
