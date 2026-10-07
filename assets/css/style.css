@@ -687,19 +687,19 @@ img.outlet-logo {
   flex: 0 0 auto;
 }
 
-.channel-btn--whatsapp {
-  background: #25D366;
+.channel-btn--telegram {
+  background: #229ED9;
   color: #fff;
 }
 
-.channel-btn--whatsapp:hover {
-  background: #1ebe57;
+.channel-btn--telegram:hover {
+  background: #1c8ec0;
   color: #fff;
   text-decoration: none;
 }
 
-.channel-btn--whatsapp:focus-visible {
-  outline: 2px solid #075E54;
+.channel-btn--telegram:focus-visible {
+  outline: 2px solid #0d6a9e;
   outline-offset: 2px;
 }
 
