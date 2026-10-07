@@ -218,3 +218,216 @@
   hosts:
     - cgtn.com
     - news.cgtn.com
+
+# --- Non-standing outlets (Focus Trends / framing logos). standing: false
+# keeps them out of the How it works panel. ---
+- id: independent
+  name: The Independent
+  context: UK, commercial
+  group: United Kingdom
+  standing: false
+  letter: I
+  color: "#e11b22"
+  hosts:
+    - independent.co.uk
+
+- id: mirror
+  name: Daily Mirror
+  context: UK, tabloid
+  group: United Kingdom
+  standing: false
+  letter: M
+  color: "#e20e17"
+  hosts:
+    - mirror.co.uk
+
+- id: standard
+  name: Evening Standard
+  context: UK, commercial
+  group: United Kingdom
+  standing: false
+  letter: E
+  color: "#111111"
+  hosts:
+    - standard.co.uk
+
+- id: reuters
+  name: Reuters
+  context: International, wire
+  group: International
+  standing: false
+  letter: R
+  color: "#ff8000"
+  hosts:
+    - reuters.com
+
+- id: ap
+  name: AP
+  context: US, wire
+  group: International
+  standing: false
+  letter: A
+  color: "#ff322e"
+  hosts:
+    - apnews.com
+
+- id: afp
+  name: AFP
+  context: International, wire
+  group: International
+  standing: false
+  letter: A
+  color: "#1a1a1a"
+  hosts:
+    - afp.com
+
+- id: dw
+  name: DW
+  context: Germany, public
+  group: International
+  standing: false
+  letter: D
+  color: "#0088ce"
+  hosts:
+    - dw.com
+
+- id: smh
+  name: Sydney Morning Herald
+  context: Australia, commercial
+  group: International
+  standing: false
+  letter: S
+  color: "#000000"
+  hosts:
+    - smh.com.au
+
+- id: abc_au
+  name: ABC Australia
+  context: Australia, public
+  group: International
+  standing: false
+  letter: A
+  color: "#000000"
+  hosts:
+    - abc.net.au
+
+- id: alarabiya
+  name: Al Arabiya
+  context: Saudi, commercial
+  group: International
+  standing: false
+  letter: A
+  color: "#e30613"
+  hosts:
+    - alarabiya.net
+    - english.alarabiya.net
+
+- id: arabnews
+  name: Arab News
+  context: Saudi, commercial
+  group: International
+  standing: false
+  letter: A
+  color: "#1a1a1a"
+  hosts:
+    - arabnews.com
+
+- id: kyivpost
+  name: Kyiv Post
+  context: Ukraine, commercial
+  group: International
+  standing: false
+  letter: K
+  color: "#c41230"
+  hosts:
+    - kyivpost.com
+
+- id: kyivindependent
+  name: Kyiv Independent
+  context: Ukraine, commercial
+  group: International
+  standing: false
+  letter: K
+  color: "#0057b7"
+  hosts:
+    - kyivindependent.com
+
+- id: nbc
+  name: NBC News
+  context: US, commercial
+  group: International
+  standing: false
+  letter: N
+  color: "#111111"
+  hosts:
+    - nbcnews.com
+
+- id: wapo
+  name: Washington Post
+  context: US, commercial
+  group: International
+  standing: false
+  letter: W
+  color: "#111111"
+  hosts:
+    - washingtonpost.com
+
+- id: timesofisrael
+  name: Times of Israel
+  context: Israel, commercial
+  group: International
+  standing: false
+  letter: T
+  color: "#1a5276"
+  hosts:
+    - timesofisrael.com
+
+- id: jpost
+  name: Jerusalem Post
+  context: Israel, commercial
+  group: International
+  standing: false
+  letter: J
+  color: "#1a1a1a"
+  hosts:
+    - jpost.com
+
+- id: tass
+  name: TASS
+  context: Russia, state news agency
+  group: International
+  standing: false
+  letter: T
+  color: "#c41230"
+  hosts:
+    - tass.com
+
+- id: iranintl
+  name: Iran International
+  context: Iran, opposition-funded
+  group: International
+  standing: false
+  letter: I
+  color: "#8e2f2a"
+  hosts:
+    - iranintl.com
+
+- id: cnbctv18
+  name: CNBC-TV18
+  context: India, commercial
+  group: International
+  standing: false
+  letter: C
+  color: "#005bac"
+  hosts:
+    - cnbctv18.com
+
+- id: rtafrica
+  name: RT Africa
+  context: Russia, state
+  group: International
+  standing: false
+  letter: R
+  color: "#75c7eb"
+  hosts:
+    - rtrunews.com
