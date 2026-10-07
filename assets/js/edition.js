@@ -134,6 +134,42 @@
     parent.replaceChild(frag, node);
   }
 
+  function markOutletName(li) {
+    var anchors = li.querySelectorAll("a");
+    if (!anchors.length) return;
+    var chosen = null;
+    var a;
+    for (a = 0; a < anchors.length; a++) {
+      if (findOutlet(anchors[a])) {
+        chosen = anchors[a];
+        break;
+      }
+    }
+    if (!chosen) chosen = anchors[0];
+    chosen.classList.add("outlet-name");
+  }
+
+  function splitFocusRow(li) {
+    var pill = li.querySelector(".focus-pill");
+    if (!pill || pill.closest(".focus-row")) return;
+    var row = document.createElement("div");
+    row.className = "focus-row";
+    var node = pill;
+    var move = [];
+    while (node) {
+      move.push(node);
+      node = node.nextSibling;
+    }
+    var m;
+    for (m = 0; m < move.length; m++) row.appendChild(move[m]);
+    var child = row.childNodes[1];
+    if (child && child.nodeType === 3) {
+      child.nodeValue = child.nodeValue.replace(/^\s*[—–\-]\s*/, "");
+      if (!child.nodeValue.replace(/\s+/g, "")) row.removeChild(child);
+    }
+    li.appendChild(row);
+  }
+
   function enhanceLists(root) {
     var lists = root.querySelectorAll("ul");
     var u, ul, prev, heading, label, anchors, a, outlet, items, li, walker, nodes, n;
@@ -155,12 +191,16 @@
       nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
       for (n = 0; n < nodes.length; n++) paintText(nodes[n]);
+      for (li = 0; li < items.length; li++) {
+        markOutletName(items[li]);
+        splitFocusRow(items[li]);
+      }
     }
   }
 
   function enhanceSpreads(root) {
     var strongs = root.querySelectorAll("p > strong");
-    var i, strong, text, match, score, rest;
+    var i, strong, text, match, score, rest, parent;
     for (i = 0; i < strongs.length; i++) {
       strong = strongs[i];
       if (strong.querySelector(".score-heat")) continue;
@@ -173,6 +213,8 @@
       strong.appendChild(document.createTextNode("Bias Spread: "));
       strong.appendChild(chip(score, score + "/10"));
       if (rest) strong.appendChild(document.createTextNode(rest));
+      parent = strong.parentElement;
+      if (parent && parent.tagName === "P") parent.classList.add("bias-callout");
     }
   }
 
@@ -222,7 +264,14 @@
         cell.classList.add("col-bias");
       }
       if (promIndex >= 0 && cells[promIndex] && cells[promIndex].tagName === "TD") {
-        cells[promIndex].classList.add("col-prom");
+        cell = cells[promIndex];
+        raw = cell.textContent.replace(/\s+/g, " ").trim();
+        value = raw.match(/^(\d+)\s*(?:\/\s*10)?$/);
+        if (value && !cell.querySelector(".score-heat")) {
+          cell.textContent = "";
+          cell.appendChild(chip(parseInt(value[1], 10), String(parseInt(value[1], 10))));
+        }
+        cell.classList.add("col-prom");
       }
       for (c = 0; c < cells.length; c++) {
         if (cells[c].tagName === "TH" || cells[c].querySelector(".cell-label") || !headers[c]) continue;
@@ -235,6 +284,36 @@
 
     var share = root.querySelector(".share-row");
     if (share && wrap.nextSibling !== share) wrap.after(share);
+  }
+
+  function enhanceJumpLinks(root) {
+    var headings = root.querySelectorAll("h2[id]");
+    if (!headings.length) return;
+    var table = root.querySelector("table");
+    if (!table) return;
+    var rows = table.querySelectorAll("tbody tr");
+    var r, storyCell, existing, link, nodes, n, node;
+    for (r = 0; r < rows.length; r++) {
+      if (r >= headings.length) break;
+      storyCell = rows[r].querySelector("td");
+      if (!storyCell) continue;
+      if (storyCell.querySelector("a.story-jump")) continue;
+      existing = storyCell.querySelector('a[href^="#"]');
+      if (existing) {
+        existing.classList.add("story-jump");
+        continue;
+      }
+      link = document.createElement("a");
+      link.className = "story-jump";
+      link.href = "#" + headings[r].id;
+      nodes = Array.prototype.slice.call(storyCell.childNodes);
+      for (n = 0; n < nodes.length; n++) {
+        node = nodes[n];
+        if (node.nodeType === 1 && node.classList && node.classList.contains("cell-label")) continue;
+        link.appendChild(node);
+      }
+      storyCell.appendChild(link);
+    }
   }
 
   function bindCopy(button) {
@@ -289,6 +368,7 @@
     enhanceLists(root);
     enhanceSpreads(root);
     enhanceTable(root);
+    enhanceJumpLinks(root);
   }
 
   var bodies = document.querySelectorAll(".edition-body");
