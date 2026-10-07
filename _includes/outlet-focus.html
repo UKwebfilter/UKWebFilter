@@ -1,0 +1,77 @@
+{% assign focus = site.data.focus-by-outlet %}
+{% assign uk_outlets = focus.outlets | where: "group", "United Kingdom" %}
+{% assign intl_outlets = focus.outlets | where: "group", "International" %}
+
+<p class="page-lede">Focus is 1 = bad / 10 = good: how tightly an outlet stays on the event versus political or personality framing. Figures below are averages across published editions, plus the latest edition's average for that outlet.</p>
+
+<p class="heat-legend" aria-label="Heat scale from bad to good">
+  Scale:
+  <span class="score-heat heat-4">1-3</span>
+  <span class="score-heat heat-3">4-5</span>
+  <span class="score-heat heat-2">6-7</span>
+  <span class="score-heat heat-1">8-10</span>
+  <span>({{ focus.outlet_count }} outlets · {{ focus.total_scores }} Focus scores · {{ focus.editions.size }} editions)</span>
+</p>
+
+{% assign groups = "United Kingdom|International" | split: "|" %}
+{% for gname in groups %}
+  {% if gname == "United Kingdom" %}
+    {% assign glist = uk_outlets %}
+  {% else %}
+    {% assign glist = intl_outlets %}
+  {% endif %}
+  {% if glist.size > 0 %}
+  <h3 class="group-heading">{{ gname }}</h3>
+  <ul class="outlet-focus-list">
+  {% for outlet in glist %}
+    <li class="outlet-focus-card">
+      <div class="outlet-focus-head">
+        {% if outlet.logo %}
+        <img
+          class="outlet-logo"
+          src="{{ outlet.logo | prepend: '/assets/logos/' | relative_url }}"
+          alt=""
+          width="18"
+          height="18"
+          loading="lazy"
+          data-letter="{{ outlet.letter | escape }}"
+          data-color="{{ outlet.color | escape }}"
+        >
+        {% else %}
+        <span class="outlet-logo outlet-letter" style="background: {{ outlet.color | escape }}; width: 1.5rem; height: 1.5rem; border-radius: 4px;" aria-hidden="true">{{ outlet.letter | escape }}</span>
+        {% endif %}
+        <div>
+          <div class="outlet-name">{{ outlet.name | escape }}</div>
+          <div class="outlet-ctx">{{ outlet.context | escape }}</div>
+        </div>
+      </div>
+      <div class="outlet-focus-scores">
+        <div class="score-block">
+          <div class="score-label">Average Focus</div>
+          <span class="score-meter {{ outlet.avg_class }}" title="{{ outlet.avg_title | escape }}" role="img" aria-label="Average Focus {{ outlet.avg_display }} out of 10, {{ outlet.avg_band }}">
+            <span class="meter-dot">{{ outlet.avg_display }}</span>
+            <svg class="meter-track" viewBox="0 0 100 14" width="100" height="14" aria-hidden="true">
+              <rect x="0" y="0" width="100" height="14" rx="7" ry="7" class="meter-track-bg"></rect>
+              <rect x="1.5" y="1.5" width="{{ outlet.avg_fill }}" height="11" rx="5.5" ry="5.5" class="meter-fill"></rect>
+            </svg>
+            <span class="meter-badge">{{ outlet.avg_display }}/10 {{ outlet.avg_band }}</span>
+          </span>
+        </div>
+        <div class="score-block">
+          <div class="score-label">Latest Focus <span class="score-sub">({{ outlet.latest_day | date: "%-d %b" }})</span></div>
+          <span class="score-meter {{ outlet.latest_class }}" title="{{ outlet.latest_title | escape }}" role="img" aria-label="Latest Focus {{ outlet.latest_display }} out of 10, {{ outlet.latest_band }}">
+            <span class="meter-dot">{{ outlet.latest_display }}</span>
+            <svg class="meter-track" viewBox="0 0 100 14" width="100" height="14" aria-hidden="true">
+              <rect x="0" y="0" width="100" height="14" rx="7" ry="7" class="meter-track-bg"></rect>
+              <rect x="1.5" y="1.5" width="{{ outlet.latest_fill }}" height="11" rx="5.5" ry="5.5" class="meter-fill"></rect>
+            </svg>
+            <span class="meter-badge">{{ outlet.latest_display }}/10 {{ outlet.latest_band }}</span>
+          </span>
+        </div>
+      </div>
+      <div class="outlet-focus-meta">{{ outlet.n_scores }} score{% if outlet.n_scores != 1 %}s{% endif %} · {{ outlet.n_days }} day{% if outlet.n_days != 1 %}s{% endif %}</div>
+    </li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+{% endfor %}
