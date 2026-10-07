@@ -5,7 +5,7 @@ permalink: /how-it-works/
 description: How Natter scores UK prominence, Neutrality, and Focus, and which outlets sit on the standing panel.
 ---
 
-Natter lines up the morning’s stories in two blocks — the UK top five, then up to five world stories that also have UK coverage — and how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
+Natter lines up the morning’s stories in two blocks: the UK top five, then up to five world stories that also have UK coverage, and how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
 
 ## Two sections
 
