@@ -796,3 +796,226 @@ img.outlet-logo {
     break-inside: avoid;
   }
 }
+
+/* === Production: horizontal SVG score meters === */
+.wrap {
+  width: min(100% - 2rem, 56rem);
+}
+
+.rank-section {
+  margin: 0.85rem 0 0.15rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Keep table card from clipping meter caps */
+.table-wrap {
+  overflow: visible !important;
+}
+.edition-body table {
+  overflow: visible;
+}
+.edition-body td.col-prom,
+.edition-body td.col-bias {
+  overflow: visible;
+  padding-right: 1rem;
+}
+
+.score-meter {
+  --meter-fill: #2f9e66;
+  --track-w: 7.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--sans);
+  vertical-align: middle;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.meter-dot {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--meter-fill);
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.9);
+}
+.meter-track {
+  display: block;
+  flex: none;
+  width: var(--track-w);
+  /* lock aspect to viewBox so rx/ry don’t squash into a flat right tip */
+  height: calc(var(--track-w) * 14 / 100);
+  min-height: 12px;
+  overflow: visible;
+}
+.meter-track-bg {
+  fill: #d1d5db;
+}
+.meter-fill {
+  fill: var(--meter-fill);
+}
+.meter-badge {
+  flex: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--meter-fill);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.score-meter.meter-h4, .score-meter.heat-4 { --meter-fill: #c45c4a; }
+.score-meter.meter-h3, .score-meter.heat-3 { --meter-fill: #c46a2b; }
+.score-meter.meter-h2, .score-meter.heat-2 { --meter-fill: #a08a20; }
+.score-meter.meter-h1, .score-meter.heat-1 { --meter-fill: #2f9e66; }
+
+/* Kill legacy .heat-* chip backgrounds — they clip the right edge of meters */
+.score-meter.heat-1,
+.score-meter.heat-2,
+.score-meter.heat-3,
+.score-meter.heat-4 {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Compact meters in ranking tables — fixed track so ends aren't clipped */
+.edition-body th.col-prom,
+.edition-body td.col-prom,
+.edition-body th.col-bias,
+.edition-body td.col-bias {
+  width: 10.5rem;
+  min-width: 10.5rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.edition-body td.col-prom .score-meter,
+.edition-body td.col-bias .score-meter {
+  --track-w: 7rem;
+  width: auto;
+}
+.edition-body td.col-prom .meter-track,
+.edition-body td.col-bias .meter-track {
+  /* keep aspect from base rule */
+  height: calc(var(--track-w) * 14 / 100);
+}
+.edition-body td.col-prom .meter-dot,
+.edition-body td.col-bias .meter-dot {
+  width: 1.3rem;
+  height: 1.3rem;
+  font-size: 0.7rem;
+}
+.edition-body td.col-prom .meter-badge,
+.edition-body td.col-bias .meter-badge {
+  display: none;
+}
+
+/* Neutrality callout: wider meter with full rounded end visible */
+.bias-callout .score-meter {
+  --track-w: 16rem;
+  display: flex;
+  width: auto;
+  max-width: 100%;
+  margin: 0.45rem 0 0.55rem;
+  gap: 0.55rem;
+}
+.bias-callout .meter-track {
+  height: calc(var(--track-w) * 14 / 100);
+}
+.bias-callout .meter-dot {
+  width: 1.55rem;
+  height: 1.55rem;
+  font-size: 0.78rem;
+}
+
+/* Focus row: fixed track + badge; reason text wraps below/beside without clipping */
+.focus-row {
+  overflow: visible;
+}
+.focus-row .score-meter,
+.focus-meter-wrap {
+  flex: none;
+  align-items: center;
+}
+.focus-row .score-meter {
+  --track-w: 7.25rem;
+  max-width: none;
+}
+.focus-row .meter-track {
+  height: calc(var(--track-w) * 14 / 100);
+}
+.focus-row .meter-badge {
+  font-size: 0.65rem;
+}
+.focus-row .focus-label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-right: 0.15rem;
+}
+
+/* Hide legacy pills when meters are present (safety) */
+.focus-row .focus-pill { display: none; }
+
+@media (max-width: 640px) {
+  .edition-body th.col-prom,
+  .edition-body td.col-prom,
+  .edition-body th.col-bias,
+  .edition-body td.col-bias {
+    width: 8.5rem;
+    min-width: 8.5rem;
+  }
+  .edition-body td.col-prom .score-meter,
+  .edition-body td.col-bias .score-meter {
+    --track-w: 4.5rem;
+  }
+}
+
+
+/* Ensure framing cards never shear meter right tips */
+.framed-list > li,
+.edition-body p:has(> strong) + ul > li,
+.focus-row,
+.focus-meter-wrap,
+.bias-callout {
+  overflow: visible;
+}
+.score-meter,
+.focus-meter-wrap {
+  overflow: visible;
+}
+
+
+/* Table meters: never clip SVG rounded caps */
+.edition-body table,
+.edition-body thead,
+.edition-body tbody,
+.edition-body tr,
+.edition-body th,
+.edition-body td {
+  overflow: visible !important;
+}
+.edition-body td.col-prom .score-meter,
+.edition-body td.col-bias .score-meter {
+  display: inline-flex;
+  overflow: visible;
+}
+.edition-body td.col-prom svg.meter-track,
+.edition-body td.col-bias svg.meter-track {
+  overflow: visible;
+  flex: none;
+}
