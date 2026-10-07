@@ -1,6 +1,7 @@
 /* Edition presentation.
    In a "How it was framed" list, "Focus n/10" or "Focus n" becomes a heat pill.
-   "Bias Spread: n/10" and the Bias Spread table column use the same scale:
+   "Neutrality: n/10" (and legacy "Bias Spread: n/10") and the Neutrality /
+   Bias Spread table column use the same scale:
    1–3 red (bad), 4–5 orange, 6–7 yellow, 8–10 green (good). */
 (function () {
   var outlets = [];
@@ -27,11 +28,79 @@
     return "heat-1";
   }
 
+  function meterHeatClass(score) {
+    var n = clampScore(score);
+    if (n <= 3) return "meter-h4";
+    if (n <= 5) return "meter-h3";
+    if (n <= 7) return "meter-h2";
+    return "meter-h1";
+  }
+
+  function bandLabel(score) {
+    var n = clampScore(score);
+    if (n <= 3) return "Low";
+    if (n <= 6) return "Med";
+    return "High";
+  }
+
+  function meter(score, opts) {
+    opts = opts || {};
+    var n = clampScore(score);
+    var wrap = document.createElement("span");
+    wrap.className = "score-meter " + meterHeatClass(n);
+    wrap.title = n + "/10 · " + bandLabel(n);
+    wrap.setAttribute("role", "img");
+    wrap.setAttribute("aria-label", (opts.ariaPrefix ? opts.ariaPrefix + " " : "") + n + " out of 10, " + bandLabel(n));
+
+    var dot = document.createElement("span");
+    dot.className = "meter-dot";
+    dot.textContent = String(n);
+    wrap.appendChild(dot);
+
+    /* SVG pills — track + fill both get true rounded caps (no CSS overflow shear) */
+    var NS = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("class", "meter-track");
+    svg.setAttribute("viewBox", "0 0 100 14");
+    svg.setAttribute("width", "100");
+    svg.setAttribute("height", "14");
+    svg.setAttribute("aria-hidden", "true");
+
+    var trackRect = document.createElementNS(NS, "rect");
+    trackRect.setAttribute("x", "0");
+    trackRect.setAttribute("y", "0");
+    trackRect.setAttribute("width", "100");
+    trackRect.setAttribute("height", "14");
+    trackRect.setAttribute("rx", "7");
+    trackRect.setAttribute("ry", "7");
+    trackRect.setAttribute("class", "meter-track-bg");
+    svg.appendChild(trackRect);
+
+    var fillW = Math.min(88, Math.max(14, n * 8.8));
+    var fillRect = document.createElementNS(NS, "rect");
+    fillRect.setAttribute("x", "1.5");
+    fillRect.setAttribute("y", "1.5");
+    fillRect.setAttribute("width", String(Math.max(11, fillW - 1.5)));
+    fillRect.setAttribute("height", "11");
+    fillRect.setAttribute("rx", "5.5");
+    fillRect.setAttribute("ry", "5.5");
+    fillRect.setAttribute("class", "meter-fill");
+    svg.appendChild(fillRect);
+
+    wrap.appendChild(svg);
+
+    if (opts.badge !== false) {
+      var badge = document.createElement("span");
+      badge.className = "meter-badge";
+      badge.textContent = opts.badgeText || (n + "/10 " + bandLabel(n));
+      wrap.appendChild(badge);
+    }
+    return wrap;
+  }
+
   function chip(score, label) {
-    var span = document.createElement("span");
-    span.className = "score-heat " + heatClass(score);
-    span.textContent = label;
-    return span;
+    /* Horizontal SVG score meter instead of heat chip. */
+    return meter(score, { badge: false, ariaPrefix: "Score" });
   }
 
   function findOutlet(anchor) {
@@ -104,7 +173,7 @@
 
   function paintText(node) {
     var parent = node.parentNode;
-    if (!parent || parent.closest("code, pre, script, style, .focus-pill, .score-heat, .outlet-ctx, a")) return;
+    if (!parent || parent.closest("code, pre, script, style, .focus-pill, .score-heat, .score-meter, .outlet-ctx, a")) return;
     var text = node.nodeValue;
     if (!text || (text.indexOf("Focus") === -1 && text.indexOf("(") === -1)) return;
     focusToken.lastIndex = 0;
@@ -117,11 +186,17 @@
       if (match.index > last) frag.appendChild(document.createTextNode(text.slice(last, match.index)));
       if (match[1]) {
         var score = clampScore(parseInt(match[1], 10));
-        var pill = document.createElement("span");
-        pill.className = "focus-pill " + heatClass(score);
-        pill.title = "Focus " + score + "/10";
-        pill.textContent = "Focus " + score;
-        frag.appendChild(pill);
+        var focusWrap = document.createElement("span");
+        focusWrap.className = "focus-meter-wrap";
+        focusWrap.style.display = "inline-flex";
+        focusWrap.style.alignItems = "center";
+        focusWrap.style.gap = "0.35rem";
+        var flabel = document.createElement("span");
+        flabel.className = "focus-label";
+        flabel.textContent = "Focus";
+        focusWrap.appendChild(flabel);
+        focusWrap.appendChild(meter(score, { ariaPrefix: "Focus", badge: true }));
+        frag.appendChild(focusWrap);
       } else {
         var ctx = document.createElement("span");
         ctx.className = "outlet-ctx";
@@ -150,7 +225,7 @@
   }
 
   function splitFocusRow(li) {
-    var pill = li.querySelector(".focus-pill");
+    var pill = li.querySelector(".focus-meter-wrap, .focus-pill, .score-meter");
     if (!pill || pill.closest(".focus-row")) return;
     var row = document.createElement("div");
     row.className = "focus-row";
@@ -203,18 +278,23 @@
     var i, strong, text, match, score, rest, parent;
     for (i = 0; i < strongs.length; i++) {
       strong = strongs[i];
-      if (strong.querySelector(".score-heat")) continue;
+      if (strong.querySelector(".score-heat, .score-meter")) continue;
       text = strong.textContent.replace(/\s+/g, " ").trim();
-      match = text.match(/^Bias Spread:\s*(\d+)\s*\/\s*10(.*)$/i);
+      /* Accept Neutrality (current) and Bias Spread (legacy editions). */
+      match = text.match(/^(?:Neutrality|Bias Spread):\s*(\d+)\s*\/\s*10(.*)$/i);
       if (!match) continue;
       score = clampScore(parseInt(match[1], 10));
       rest = match[2] || "";
       strong.textContent = "";
-      strong.appendChild(document.createTextNode("Bias Spread: "));
-      strong.appendChild(chip(score, score + "/10"));
-      if (rest) strong.appendChild(document.createTextNode(rest));
+      strong.appendChild(document.createTextNode("Neutrality"));
+      strong.appendChild(document.createElement("br"));
+      strong.appendChild(meter(score, { ariaPrefix: "Neutrality", badge: true }));
+      /* Keep trailing period/space out of the meter line; body copy stays after </strong>. */
       parent = strong.parentElement;
       if (parent && parent.tagName === "P") parent.classList.add("bias-callout");
+      if (rest) {
+        /* rest usually starts with "." — drop it; the following text node holds the summary. */
+      }
     }
   }
 
@@ -243,6 +323,7 @@
       headers.push(headCells[h].textContent.replace(/\s+/g, " ").trim());
     }
     var biasIndex = headerIndex(headers, "bias");
+    if (biasIndex < 0) biasIndex = headerIndex(headers, "neutrality");
     var promIndex = headerIndex(headers, "prominence");
     if (biasIndex >= 0) headCells[biasIndex].classList.add("col-bias");
     if (promIndex >= 0) headCells[promIndex].classList.add("col-prom");
@@ -255,7 +336,7 @@
         cell = cells[biasIndex];
         raw = cell.textContent.replace(/\s+/g, " ").trim();
         value = raw.match(/^(\d+)\s*(?:\/\s*10)?$/);
-        if (value && !cell.querySelector(".score-heat")) {
+        if (value && !cell.querySelector(".score-heat, .score-meter")) {
           cell.textContent = "";
           cell.appendChild(chip(parseInt(value[1], 10), String(parseInt(value[1], 10))));
         }
@@ -266,7 +347,7 @@
         cell.classList.add("col-prom");
         raw = cell.textContent.replace(/\s+/g, " ").trim();
         value = raw.match(/^(\d+)\s*(?:\/\s*10)?$/);
-        if (value && !cell.querySelector(".score-heat")) {
+        if (value && !cell.querySelector(".score-heat, .score-meter")) {
           cell.textContent = "";
           cell.appendChild(chip(parseInt(value[1], 10), String(parseInt(value[1], 10))));
         }
