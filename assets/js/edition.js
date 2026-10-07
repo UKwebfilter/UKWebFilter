@@ -449,17 +449,6 @@
     });
   }
 
-  function bindNewsletter(form) {
-    form.addEventListener("submit", function (event) {
-      var action = form.getAttribute("action") || "";
-      if (action && action !== "#") return;
-      event.preventDefault();
-      var status = form.querySelector(".newsletter-status");
-      if (!status) return;
-      status.hidden = false;
-      status.textContent = "Email signup isn’t connected yet.";
-    });
-  }
 
   function enhance(root) {
     if (root.getAttribute("data-natter") === "1") return;
@@ -480,8 +469,6 @@
   var logos = document.querySelectorAll("img.outlet-logo");
   for (b = 0; b < logos.length; b++) bindLogoError(logos[b]);
 
-  var forms = document.querySelectorAll(".newsletter-form");
-  for (b = 0; b < forms.length; b++) bindNewsletter(forms[b]);
 
   function bindBannerScrollFade(scrollEl) {
     var wrap = scrollEl.closest(".edition-banner-scroll-wrap");
