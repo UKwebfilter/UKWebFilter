@@ -40,7 +40,7 @@ Focus uses the same 1–10 heat scale, but for a single outlet on that outlet’
 
 A high Focus stays tightly with the facts of the event. A low Focus leans into politics, personality or a contested frame that is not needed to report what happened. Two outlets can both score low and still pull the frame in opposite directions.
 
-Each outlet line carries a short Focus reason under the framing comment, explaining why that score was given.
+Each outlet line carries a Focus reason under the framing comment, explaining why that score was given.
 
 <p class="heat-scale" aria-label="Focus pills on the heat scale">
   <span class="focus-pill heat-4" title="Focus 2/10">Focus 2</span>
