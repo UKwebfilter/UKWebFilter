@@ -1,6 +1,7 @@
 title: Natter
-tagline: "How the world reported today’s UK news"
-description: "How the world reported today’s UK news. A morning edition of the top UK stories, with Bias Spread across outlets and a Focus score for each one."
+tagline: "The news. The framing. The bigger picture."
+tagline_sub: "Natter compares how different news outlets cover the same stories, highlighting the facts, differences in emphasis and the narratives shaping what you read."
+description: "Natter compares how different news outlets cover the same stories, highlighting the facts, differences in emphasis and the narratives shaping what you read."
 
 # Public Buttondown embed URL (free plan). Not a secret and not a paid embed.
 # Replace the placeholder before signup should deliver mail:
