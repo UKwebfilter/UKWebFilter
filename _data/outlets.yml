@@ -431,3 +431,53 @@
   color: "#75c7eb"
   hosts:
     - rtrunews.com
+
+- id: nyt
+  name: New York Times
+  context: US, commercial
+  group: International
+  standing: false
+  letter: N
+  color: "#111111"
+  hosts:
+    - nytimes.com
+
+- id: cbs
+  name: CBS News
+  context: US, commercial
+  group: International
+  standing: false
+  letter: C
+  color: "#0a2c5a"
+  hosts:
+    - cbsnews.com
+
+- id: rt
+  name: RT
+  context: Russia, state
+  group: International
+  standing: false
+  letter: R
+  color: "#75c7eb"
+  hosts:
+    - rt.com
+
+- id: politicoeu
+  name: Politico Europe
+  context: Europe, commercial
+  group: International
+  standing: false
+  letter: P
+  color: "#d4202a"
+  hosts:
+    - politico.eu
+
+- id: ft
+  name: Financial Times
+  context: UK, commercial
+  group: United Kingdom
+  standing: false
+  letter: F
+  color: "#cc785c"
+  hosts:
+    - ft.com
