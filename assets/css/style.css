@@ -131,11 +131,32 @@ input:focus-visible {
 }
 
 .tagline {
-  margin: 0.15rem 0 0;
+  margin: 0.2rem 0 0;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.tagline-sub {
+  margin: 0.2rem 0 0;
+  max-width: 38rem;
   color: var(--muted);
   font-family: var(--sans);
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .tagline {
+    font-size: 0.92rem;
+  }
+
+  .tagline-sub {
+    font-size: 0.78rem;
+  }
 }
 
 .nav {
@@ -889,7 +910,7 @@ img.outlet-logo {
 .score-meter.meter-h2, .score-meter.heat-2 { --meter-fill: #a08a20; }
 .score-meter.meter-h1, .score-meter.heat-1 { --meter-fill: #2f9e66; }
 
-/* Kill legacy .heat-* chip backgrounds — they clip the right edge of meters */
+/* Kill legacy .heat-* chip backgrounds: they clip the right edge of meters */
 .score-meter.heat-1,
 .score-meter.heat-2,
 .score-meter.heat-3,
@@ -900,7 +921,7 @@ img.outlet-logo {
   border-radius: 0 !important;
 }
 
-/* Compact meters in ranking tables — fixed track so ends aren't clipped */
+/* Compact meters in ranking tables: fixed track so ends aren't clipped */
 .edition-body th.col-prom,
 .edition-body td.col-prom,
 .edition-body th.col-bias,
