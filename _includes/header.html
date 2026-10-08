@@ -19,6 +19,7 @@
         {{ site.title | escape }}
       </a>
       <p class="tagline">{{ site.tagline | escape }}</p>
+      {% if site.tagline_sub %}<p class="tagline-sub">{{ site.tagline_sub | escape }}</p>{% endif %}
       <nav class="nav" aria-label="Site">
         <a href="{{ '/' | relative_url }}"{% if nav_current == "today" %} aria-current="page"{% endif %}>Today</a>
         <a href="{{ '/trends/' | relative_url }}"{% if nav_current == "trends" %} aria-current="page"{% endif %}>Trends</a>

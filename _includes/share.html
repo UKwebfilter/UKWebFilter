@@ -1,6 +1,6 @@
 {% assign share_url = include.url | absolute_url %}
 {% assign share_date = include.date | date: "%-d %B %Y" %}
-{% capture share_text %}Natter, {{ share_date }}: how the world reported today's UK news{% endcapture %}
+{% capture share_text %}Natter, {{ share_date }}: the news, the framing, the bigger picture{% endcapture %}
 {% capture bsky_text %}{{ share_text }} {{ share_url }}{% endcapture %}
 <div class="share-row" aria-label="Share this edition">
   <button type="button" class="share-copy" data-url="{{ share_url | escape }}">Copy link</button>
