@@ -6,7 +6,7 @@
   {% if page.date %}
     {% assign edition_date = page.date | date: "%-d %B %Y" %}
     {% assign page_title = edition_date | append: " · " | append: site.title %}
-    {% assign page_description = "How the world reported the UK’s top stories on " | append: edition_date | append: "." %}
+    {% assign page_description = "How different news outlets covered the UK’s top stories on " | append: edition_date | append: "." %}
   {% elsif page.url == "/" or page.url == "/index.html" %}
     {% assign page_title = site.title %}
     {% assign page_description = site.description %}
@@ -33,7 +33,7 @@
   <meta name="twitter:description" content="{{ page_description | escape }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261007j">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261008a">
   {% feed_meta %}
 </head>
 <body>
