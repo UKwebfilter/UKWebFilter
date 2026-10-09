@@ -115,6 +115,7 @@
   logo: fox.png
   hosts:
     - foxnews.com
+    - foxweather.com
 
 - id: aljazeera
   name: Al Jazeera
@@ -481,3 +482,44 @@
   color: "#cc785c"
   hosts:
     - ft.com
+
+- id: lemonde
+  name: Le Monde
+  context: France, commercial
+  group: International
+  standing: false
+  letter: M
+  color: "#111111"
+  hosts:
+    - lemonde.fr
+
+- id: haaretz
+  name: Haaretz
+  context: Israel, commercial
+  group: International
+  standing: false
+  letter: H
+  color: "#0b4f6c"
+  hosts:
+    - haaretz.com
+
+- id: timesofindia
+  name: Times of India
+  context: India, commercial
+  group: International
+  standing: false
+  letter: T
+  color: "#a51c30"
+  hosts:
+    - timesofindia.indiatimes.com
+    - indiatimes.com
+
+- id: scmp
+  name: South China Morning Post
+  context: Hong Kong, commercial
+  group: International
+  standing: false
+  letter: S
+  color: "#001246"
+  hosts:
+    - scmp.com
