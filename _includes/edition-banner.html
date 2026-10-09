@@ -1,0 +1,56 @@
+{%- comment -%}
+  Edition story collage banner. Usage: {% include edition-banner.html post=page %}
+  Desktop (641px and up): grid of tiles, exactly the reading-column width.
+    Tiles listed in banner_desktop_drop (1-based positions in banner_tiles)
+    are left out on desktop only. Set it per post in front matter, or
+    site-wide in _config.yml. Default drops 5 and 10, giving a 2x4 grid:
+    row 1 = UK 1-4, row 2 = World 6-9. Use [] to show all 10 (2x5).
+    Without banner_tiles, falls back to the composite banner image.
+  Mobile (640px and below): 1x10 scroll-snap strip with every tile.
+{%- endcomment -%}
+{%- assign bp = include.post -%}
+{%- if bp.banner -%}
+{%- if bp.banner_desktop_drop == nil -%}
+  {%- assign banner_drop = site.banner_desktop_drop -%}
+{%- else -%}
+  {%- assign banner_drop = bp.banner_desktop_drop -%}
+{%- endif -%}
+{%- assign banner_kept = 0 -%}
+{%- for tile in bp.banner_tiles -%}
+  {%- unless banner_drop contains forloop.index -%}{%- assign banner_kept = banner_kept | plus: 1 -%}{%- endunless -%}
+{%- endfor -%}
+{%- assign banner_cols = banner_kept | plus: 1 | divided_by: 2 -%}
+    <figure class="edition-banner" aria-label="Story collage for this edition">
+      <div class="edition-banner-desktop">
+        {%- if banner_kept > 0 %}
+        <div class="edition-banner-grid" style="--banner-cols: {{ banner_cols }}" role="img" aria-label="Collage of today’s UK and world story images">
+          {%- for tile in bp.banner_tiles -%}
+          {%- unless banner_drop contains forloop.index %}
+          <img src="{{ tile | relative_url }}" alt="" width="308" height="272" decoding="async">
+          {%- endunless -%}
+          {%- endfor %}
+        </div>
+        {%- else %}
+        <picture>
+          <source srcset="{{ bp.banner | relative_url }}" type="image/webp">
+          {% if bp.banner_fallback %}
+          <img src="{{ bp.banner_fallback | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
+          {% else %}
+          <img src="{{ bp.banner | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
+          {% endif %}
+        </picture>
+        {%- endif %}
+      </div>
+      {% if bp.banner_tiles and bp.banner_tiles.size > 0 %}
+      <div class="edition-banner-mobile">
+        <div class="edition-banner-scroll-wrap">
+          <div class="edition-banner-scroll" id="edition-banner-scroll" role="list" aria-label="Story images, swipe horizontally">
+            {% for tile in bp.banner_tiles %}
+            <img class="edition-banner-tile" src="{{ tile | relative_url }}" alt="" width="308" height="272" loading="lazy" decoding="async" role="listitem">
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </figure>
+{%- endif -%}
