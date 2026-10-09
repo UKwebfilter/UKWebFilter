@@ -5,13 +5,15 @@ permalink: /how-it-works/
 description: How we score UK prominence, Neutrality, and Focus, and which outlets sit on our standing panel.
 ---
 
-Each morning we line up the stories in two blocks: the UK top five, then up to five world stories that also have UK coverage, and show how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
+Each morning we line up the stories in three blocks: the UK top five, then up to five world stories that also have UK coverage, then the five stories leading foreign news that we haven’t already listed, and show how a standing panel of outlets framed each one. The scores describe the coverage. They do not pick a winner.
 
-## Two sections
+## Three sections
 
 **UK** ranks the day’s top five British stories by prominence across the UK outlets on the panel.
 
 **World** adds up to five leading international stories that UK outlets also covered. Stories already in the UK block do not appear again under World.
+
+**What the world is leading with** shows the five stories leading foreign news that day that aren’t already in our UK or World lists. We rank them by how widely they led the foreign outlets on our panel. Alongside World prominence and Neutrality we show UK attention, how much space UK outlets gave each story (10 = prominent, 1 = barely covered).
 
 Each story name in the ranking table jumps to that story lower on the page.
 
