@@ -11,6 +11,13 @@ description: "Natter compares how different news outlets cover the same stories,
 # A gitignored _config.local.yml can override it for a local build; see README.
 newsletter_action: "#"
 
+# Desktop story collage: tile positions (1-based, in banner_tiles order) to
+# leave out on desktop so the grid fits the reading column. 5 and 10 are the
+# last UK and last World story, giving a 2x4 grid. A post can override this
+# with its own banner_desktop_drop (use [] to show all 10). Mobile always
+# shows every tile.
+banner_desktop_drop: [5, 10]
+
 # Apex custom domain, no subpath: https://natter.tv
 url: https://natter.tv
 baseurl: ""
