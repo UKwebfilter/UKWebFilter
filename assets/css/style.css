@@ -1050,10 +1050,13 @@ img.outlet-logo {
 }
 
 
-/* ===== Edition collage banner (2026-10-07e) =====
-   Desktop: fixed 1200×280 2×5 asset, cover-crop (no stretch), wider than
-   reading column (.wrap ~46rem) via full-bleed of content shell (~75rem).
-   Mobile: 1×10 horizontal scroll-snap strip; labels off; ~3 tiles + peek.
+/* ===== Edition collage banner (2026-10-07e, column fit 2026-10-09a) =====
+   Desktop: grid of story tiles, exactly the reading-column (.wrap) width and
+   aligned with the content below. Default 2x4 (tiles 5 and 10 dropped via
+   banner_desktop_drop), each tile 12:7 and cover-cropped (no stretch); at a
+   56rem column that is 896x262. Composite banner image is only a fallback
+   for posts without banner_tiles.
+   Mobile: 1x10 horizontal scroll-snap strip; labels off; ~3 tiles + peek.
    Reading column is NOT widened. */
 .edition-head:has(.edition-banner) h1 {
   margin-bottom: 0.4rem;
@@ -1065,15 +1068,38 @@ img.outlet-logo {
   border: 0;
 }
 
-/* Break out of .wrap so banner can sit wider than the article column */
+/* Desktop banner sits inside .wrap: same width and edges as the content */
 .edition-banner-desktop {
-  width: min(100vw - 2rem, 75rem);
-  max-width: none;
-  margin-inline: calc(50% - min(50vw - 1rem, 37.5rem));
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0;
 }
 
+.edition-banner-grid {
+  --banner-cols: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--banner-cols), minmax(0, 1fr));
+  gap: 2px;
+  width: 100%;
+  background: #121216;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.edition-banner-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 12 / 7;
+  object-fit: cover;
+  object-position: center;
+  background: #1a1a1e;
+}
+
+/* Fallback: composite image only (post has no banner_tiles) */
 .edition-banner-desktop picture,
-.edition-banner-desktop img {
+.edition-banner-desktop > picture img {
   display: block;
   width: 100%;
   max-width: 100%;
