@@ -57,7 +57,7 @@
     dot.textContent = String(n);
     wrap.appendChild(dot);
 
-    /* SVG pills — track + fill both get true rounded caps (no CSS overflow shear) */
+    /* SVG pills: track + fill both get true rounded caps (no CSS overflow shear) */
     var NS = "http://www.w3.org/2000/svg";
     var svg = document.createElementNS(NS, "svg");
     svg.setAttribute("class", "meter-track");
@@ -246,9 +246,11 @@
     }
     var m;
     for (m = 0; m < move.length; m++) row.appendChild(move[m]);
+    /* The reason follows "Focus N" in the post ("Focus 8: reason"); strip the
+       leading separator (colon, dash) and whitespace so the reason starts cleanly. */
     var child = row.childNodes[1];
     if (child && child.nodeType === 3) {
-      child.nodeValue = child.nodeValue.replace(/^\s*[—–\-]\s*/, "");
+      child.nodeValue = child.nodeValue.replace(/^\s*[:\u2014\u2013\-]+\s*/, "");
       if (!child.nodeValue.replace(/\s+/g, "")) row.removeChild(child);
     }
     li.appendChild(row);
@@ -326,7 +328,7 @@ function enhanceLists(root) {
       parent = strong.parentElement;
       if (parent && parent.tagName === "P") parent.classList.add("bias-callout");
       if (rest) {
-        /* rest usually starts with "." — drop it; the following text node holds the summary. */
+        /* rest usually starts with "."; drop it; the following text node holds the summary. */
       }
     }
   }
@@ -358,8 +360,20 @@ function enhanceLists(root) {
     var biasIndex = headerIndex(headers, "bias");
     if (biasIndex < 0) biasIndex = headerIndex(headers, "neutrality");
     var promIndex = headerIndex(headers, "prominence");
+    /* "UK attention" (What the world is leading with) uses the same meter as prominence. */
+    var attnIndex = headerIndex(headers, "attention");
+    var meterCols = [];
     if (biasIndex >= 0) headCells[biasIndex].classList.add("col-bias");
-    if (promIndex >= 0) headCells[promIndex].classList.add("col-prom");
+    if (promIndex >= 0) {
+      headCells[promIndex].classList.add("col-prom");
+      meterCols.push(promIndex);
+    }
+    if (attnIndex >= 0 && attnIndex !== promIndex) {
+      headCells[attnIndex].classList.add("col-prom", "col-attn");
+      meterCols.push(attnIndex);
+      table.classList.add("has-attn");
+    }
+    var m, mi;
 
     table.classList.add("cards");
     rows = table.querySelectorAll("tbody tr");
@@ -375,9 +389,12 @@ function enhanceLists(root) {
         }
         cell.classList.add("col-bias");
       }
-      if (promIndex >= 0 && cells[promIndex] && cells[promIndex].tagName === "TD") {
-        cell = cells[promIndex];
+      for (m = 0; m < meterCols.length; m++) {
+        mi = meterCols[m];
+        if (!cells[mi] || cells[mi].tagName !== "TD") continue;
+        cell = cells[mi];
         cell.classList.add("col-prom");
+        if (mi === attnIndex) cell.classList.add("col-attn");
         raw = cell.textContent.replace(/\s+/g, " ").trim();
         value = raw.match(/^(\d+)\s*(?:\/\s*10)?$/);
         if (value && !cell.querySelector(".score-heat, .score-meter")) {
