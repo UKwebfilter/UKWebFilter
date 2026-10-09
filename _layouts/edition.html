@@ -5,31 +5,7 @@ layout: default
   <header class="edition-head">
     <p class="eyebrow">Edition</p>
     <h1>{{ page.date | date: "%-d %B %Y" }}</h1>
-    {% if page.banner %}
-    <figure class="edition-banner" aria-label="Story collage for this edition">
-      <div class="edition-banner-desktop">
-        <picture>
-          <source srcset="{{ page.banner | relative_url }}" type="image/webp">
-          {% if page.banner_fallback %}
-          <img src="{{ page.banner_fallback | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
-          {% else %}
-          <img src="{{ page.banner | relative_url }}" width="1200" height="280" alt="Collage of today’s UK and world story images" decoding="async">
-          {% endif %}
-        </picture>
-      </div>
-      {% if page.banner_tiles and page.banner_tiles.size > 0 %}
-      <div class="edition-banner-mobile">
-        <div class="edition-banner-scroll-wrap">
-          <div class="edition-banner-scroll" id="edition-banner-scroll" role="list" aria-label="Story images, swipe horizontally">
-            {% for tile in page.banner_tiles %}
-            <img class="edition-banner-tile" src="{{ tile | relative_url }}" alt="" width="308" height="272" loading="lazy" decoding="async" role="listitem">
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      {% endif %}
-    </figure>
-    {% endif %}
+    {% include edition-banner.html post=page %}
   </header>
   <div class="edition-body">
     {{ content }}
