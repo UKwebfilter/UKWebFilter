@@ -523,3 +523,14 @@
   color: "#001246"
   hosts:
     - scmp.com
+
+- id: presstv
+  name: PressTV
+  context: Iran, state-run
+  group: International
+  standing: false
+  letter: P
+  color: "#b5121b"
+  hosts:
+    - presstv.ir
+    - presstv.co.uk
