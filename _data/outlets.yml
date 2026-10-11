@@ -534,3 +534,14 @@
   hosts:
     - presstv.ir
     - presstv.co.uk
+
+- id: irna
+  name: IRNA
+  context: Iran, state
+  group: International
+  standing: false
+  letter: I
+  color: "#0b5d3b"
+  hosts:
+    - irna.ir
+    - en.irna.ir
