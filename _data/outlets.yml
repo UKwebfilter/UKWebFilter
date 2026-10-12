@@ -1,547 +1,513 @@
-# Standing panel. UK outlets feed the prominence score. The framing list
-# quotes panel outlets that covered the story. Logos are local favicons.
 - id: bbc
   name: BBC
   context: UK, public-service
   group: United Kingdom
   standing: true
   letter: B
-  color: "#111111"
+  color: '#111111'
   logo: bbc.png
   hosts:
-    - bbc.co.uk
-    - bbc.com
-
+  - bbc.co.uk
+  - bbc.com
 - id: sky
   name: Sky News
   context: UK, commercial
   group: United Kingdom
   standing: true
   letter: S
-  color: "#c41230"
+  color: '#c41230'
   logo: sky.png
   hosts:
-    - news.sky.com
-    - sky.com
-
+  - news.sky.com
+  - sky.com
 - id: channel4
   name: Channel 4
   context: UK, public-service
   group: United Kingdom
   standing: true
-  letter: "4"
-  color: "#1a1a1a"
+  letter: '4'
+  color: '#1a1a1a'
   logo: channel4.png
   hosts:
-    - channel4.com
-
+  - channel4.com
 - id: guardian
   name: The Guardian
   context: UK, commercial
   group: United Kingdom
   standing: true
   letter: G
-  color: "#052962"
+  color: '#052962'
   logo: guardian.png
   hosts:
-    - theguardian.com
-    - guardian.co.uk
-
+  - theguardian.com
+  - guardian.co.uk
 - id: telegraph
   name: The Telegraph
   context: UK, commercial
   group: United Kingdom
   standing: true
   letter: T
-  color: "#1a1a1a"
+  color: '#1a1a1a'
   logo: telegraph.png
   hosts:
-    - telegraph.co.uk
-
+  - telegraph.co.uk
 - id: times
   name: The Times
   context: UK, commercial
   group: United Kingdom
   standing: true
   letter: T
-  color: "#111111"
+  color: '#111111'
   logo: times.png
   hosts:
-    - thetimes.com
-    - thetimes.co.uk
-
+  - thetimes.com
+  - thetimes.co.uk
 - id: mail
   name: Daily Mail
   context: UK, commercial
   group: United Kingdom
   standing: true
   letter: M
-  color: "#004db3"
+  color: '#004db3'
   logo: mail.png
   hosts:
-    - dailymail.com
-    - dailymail.co.uk
-
+  - dailymail.com
+  - dailymail.co.uk
 - id: sun
   name: The Sun
   context: UK, tabloid
   group: United Kingdom
   standing: true
   letter: S
-  color: "#ce0000"
+  color: '#ce0000'
   logo: sun.png
   hosts:
-    - thesun.co.uk
-    - thesun.com
-
+  - thesun.co.uk
+  - thesun.com
 - id: cnn
   name: CNN
   context: US, commercial
   group: International
   standing: true
   letter: C
-  color: "#cc0000"
+  color: '#cc0000'
   logo: cnn.png
   hosts:
-    - cnn.com
-
+  - cnn.com
 - id: fox
   name: Fox News
   context: US, commercial
   group: International
   standing: true
   letter: F
-  color: "#003366"
+  color: '#003366'
   logo: fox.png
   hosts:
-    - foxnews.com
-    - foxweather.com
-
+  - foxnews.com
+  - foxweather.com
 - id: aljazeera
   name: Al Jazeera
   context: Qatar, state-funded
   group: International
   standing: true
   letter: A
-  color: "#f18500"
+  color: '#f18500'
   logo: aljazeera.png
   hosts:
-    - aljazeera.com
-
+  - aljazeera.com
 - id: xinhua
   name: Xinhua
   context: China, state news agency
   group: International
   standing: true
   letter: X
-  color: "#c00000"
+  color: '#c00000'
   logo: xinhua.png
   hosts:
-    - news.cn
-    - xinhuanet.com
-
+  - news.cn
+  - xinhuanet.com
 - id: tehran
   name: Tehran Times
   context: Iran, government-linked
   group: International
   standing: true
   letter: T
-  color: "#8e2f2a"
+  color: '#8e2f2a'
   logo: tehran.png
   hosts:
-    - tehrantimes.com
-
+  - tehrantimes.com
 - id: ria
   name: RIA Novosti
   context: Russia, state-owned
   group: International
   standing: true
   letter: R
-  color: "#1a3d7c"
+  color: '#1a3d7c'
   logo: ria.png
   hosts:
-    - ria.ru
-
+  - ria.ru
 - id: ynet
   name: Ynet
   context: Israel, commercial
   group: International
   standing: true
   letter: Y
-  color: "#c41230"
+  color: '#c41230'
   logo: ynet.png
   hosts:
-    - ynetnews.com
-    - ynet.co.il
-
+  - ynetnews.com
+  - ynet.co.il
 - id: folha
   name: Folha de S.Paulo
   context: Brazil, commercial
   group: International
   standing: true
   letter: F
-  color: "#111111"
+  color: '#111111'
   logo: folha.png
   hosts:
-    - folha.uol.com.br
-
+  - folha.uol.com.br
 - id: abc
   name: ABC News
   context: US, commercial
   group: International
   standing: true
   letter: A
-  color: "#111111"
+  color: '#111111'
   logo: abc.png
   hosts:
-    - abcnews.com
-    - abcnews.go.com
-
+  - abcnews.com
+  - abcnews.go.com
 - id: france24
   name: France 24
   context: France, state-funded
   group: International
   standing: true
   letter: F
-  color: "#e10600"
+  color: '#e10600'
   logo: france24.png
   hosts:
-    - france24.com
-
+  - france24.com
 - id: cgtn
   name: CGTN
   context: China, state-owned
   group: International
   standing: true
   letter: C
-  color: "#c41230"
+  color: '#c41230'
   logo: cgtn.png
   hosts:
-    - cgtn.com
-    - news.cgtn.com
-
-# --- Non-standing outlets (Focus Trends / framing logos). standing: false
-# keeps them out of the How it works panel. ---
+  - cgtn.com
+  - news.cgtn.com
 - id: independent
   name: The Independent
   context: UK, commercial
   group: United Kingdom
   standing: false
   letter: I
-  color: "#e11b22"
+  color: '#e11b22'
   hosts:
-    - independent.co.uk
-
+  - independent.co.uk
 - id: mirror
   name: Daily Mirror
   context: UK, tabloid
   group: United Kingdom
   standing: false
   letter: M
-  color: "#e20e17"
+  color: '#e20e17'
   hosts:
-    - mirror.co.uk
-
+  - mirror.co.uk
 - id: standard
   name: Evening Standard
   context: UK, commercial
   group: United Kingdom
   standing: false
   letter: E
-  color: "#111111"
+  color: '#111111'
   hosts:
-    - standard.co.uk
-
+  - standard.co.uk
 - id: reuters
   name: Reuters
   context: International, wire
   group: International
   standing: false
   letter: R
-  color: "#ff8000"
+  color: '#ff8000'
   hosts:
-    - reuters.com
-
+  - reuters.com
 - id: ap
   name: AP
   context: US, wire
   group: International
   standing: false
   letter: A
-  color: "#ff322e"
+  color: '#ff322e'
   hosts:
-    - apnews.com
-
+  - apnews.com
 - id: afp
   name: AFP
   context: International, wire
   group: International
   standing: false
   letter: A
-  color: "#1a1a1a"
+  color: '#1a1a1a'
   hosts:
-    - afp.com
-
+  - afp.com
 - id: dw
   name: DW
   context: Germany, public
   group: International
   standing: false
   letter: D
-  color: "#0088ce"
+  color: '#0088ce'
   hosts:
-    - dw.com
-
+  - dw.com
 - id: smh
   name: Sydney Morning Herald
   context: Australia, commercial
   group: International
   standing: false
   letter: S
-  color: "#000000"
+  color: '#000000'
   hosts:
-    - smh.com.au
-
+  - smh.com.au
 - id: abc_au
   name: ABC Australia
   context: Australia, public
   group: International
   standing: false
   letter: A
-  color: "#000000"
+  color: '#000000'
   hosts:
-    - abc.net.au
-
+  - abc.net.au
 - id: alarabiya
   name: Al Arabiya
   context: Saudi, commercial
   group: International
   standing: false
   letter: A
-  color: "#e30613"
+  color: '#e30613'
   hosts:
-    - alarabiya.net
-    - english.alarabiya.net
-
+  - alarabiya.net
+  - english.alarabiya.net
 - id: arabnews
   name: Arab News
   context: Saudi, commercial
   group: International
   standing: false
   letter: A
-  color: "#1a1a1a"
+  color: '#1a1a1a'
   hosts:
-    - arabnews.com
-
+  - arabnews.com
 - id: kyivpost
   name: Kyiv Post
   context: Ukraine, commercial
   group: International
   standing: false
   letter: K
-  color: "#c41230"
+  color: '#c41230'
   hosts:
-    - kyivpost.com
-
+  - kyivpost.com
 - id: kyivindependent
   name: Kyiv Independent
   context: Ukraine, commercial
   group: International
   standing: false
   letter: K
-  color: "#0057b7"
+  color: '#0057b7'
   hosts:
-    - kyivindependent.com
-
+  - kyivindependent.com
 - id: nbc
   name: NBC News
   context: US, commercial
   group: International
   standing: false
   letter: N
-  color: "#111111"
+  color: '#111111'
   hosts:
-    - nbcnews.com
-
+  - nbcnews.com
 - id: wapo
   name: Washington Post
   context: US, commercial
   group: International
   standing: false
   letter: W
-  color: "#111111"
+  color: '#111111'
   hosts:
-    - washingtonpost.com
-
+  - washingtonpost.com
 - id: timesofisrael
   name: Times of Israel
   context: Israel, commercial
   group: International
   standing: false
   letter: T
-  color: "#1a5276"
+  color: '#1a5276'
   hosts:
-    - timesofisrael.com
-
+  - timesofisrael.com
 - id: jpost
   name: Jerusalem Post
   context: Israel, commercial
   group: International
   standing: false
   letter: J
-  color: "#1a1a1a"
+  color: '#1a1a1a'
   hosts:
-    - jpost.com
-
+  - jpost.com
 - id: tass
   name: TASS
   context: Russia, state news agency
   group: International
   standing: false
   letter: T
-  color: "#c41230"
+  color: '#c41230'
   hosts:
-    - tass.com
-
+  - tass.com
 - id: iranintl
   name: Iran International
   context: Iran, opposition-funded
   group: International
   standing: false
   letter: I
-  color: "#8e2f2a"
+  color: '#8e2f2a'
   hosts:
-    - iranintl.com
-
+  - iranintl.com
 - id: cnbctv18
   name: CNBC-TV18
   context: India, commercial
   group: International
   standing: false
   letter: C
-  color: "#005bac"
+  color: '#005bac'
   hosts:
-    - cnbctv18.com
-
+  - cnbctv18.com
 - id: rtafrica
   name: RT Africa
   context: Russia, state
   group: International
   standing: false
   letter: R
-  color: "#75c7eb"
+  color: '#75c7eb'
   hosts:
-    - rtrunews.com
-
+  - rtrunews.com
 - id: nyt
   name: New York Times
   context: US, commercial
   group: International
   standing: false
   letter: N
-  color: "#111111"
+  color: '#111111'
   hosts:
-    - nytimes.com
-
+  - nytimes.com
 - id: cbs
   name: CBS News
   context: US, commercial
   group: International
   standing: false
   letter: C
-  color: "#0a2c5a"
+  color: '#0a2c5a'
   hosts:
-    - cbsnews.com
-
+  - cbsnews.com
 - id: rt
   name: RT
   context: Russia, state
   group: International
   standing: false
   letter: R
-  color: "#75c7eb"
+  color: '#75c7eb'
   hosts:
-    - rt.com
-
+  - rt.com
 - id: politicoeu
   name: Politico Europe
   context: Europe, commercial
   group: International
   standing: false
   letter: P
-  color: "#d4202a"
+  color: '#d4202a'
   hosts:
-    - politico.eu
-
+  - politico.eu
 - id: ft
   name: Financial Times
   context: UK, commercial
   group: United Kingdom
   standing: false
   letter: F
-  color: "#cc785c"
+  color: '#cc785c'
   hosts:
-    - ft.com
-
+  - ft.com
 - id: lemonde
   name: Le Monde
   context: France, commercial
   group: International
   standing: false
   letter: M
-  color: "#111111"
+  color: '#111111'
   hosts:
-    - lemonde.fr
-
+  - lemonde.fr
 - id: haaretz
   name: Haaretz
   context: Israel, commercial
   group: International
   standing: false
   letter: H
-  color: "#0b4f6c"
+  color: '#0b4f6c'
   hosts:
-    - haaretz.com
-
+  - haaretz.com
 - id: timesofindia
   name: Times of India
   context: India, commercial
   group: International
   standing: false
   letter: T
-  color: "#a51c30"
+  color: '#a51c30'
   hosts:
-    - timesofindia.indiatimes.com
-    - indiatimes.com
-
+  - timesofindia.indiatimes.com
+  - indiatimes.com
 - id: scmp
   name: South China Morning Post
   context: Hong Kong, commercial
   group: International
   standing: false
   letter: S
-  color: "#001246"
+  color: '#001246'
   hosts:
-    - scmp.com
-
+  - scmp.com
 - id: presstv
   name: PressTV
   context: Iran, state-run
   group: International
   standing: false
   letter: P
-  color: "#b5121b"
+  color: '#b5121b'
   hosts:
-    - presstv.ir
-    - presstv.co.uk
-
+  - presstv.ir
+  - presstv.co.uk
 - id: irna
   name: IRNA
   context: Iran, state
   group: International
   standing: false
   letter: I
-  color: "#0b5d3b"
+  color: '#0b5d3b'
   hosts:
-    - irna.ir
-    - en.irna.ir
+  - irna.ir
+  - en.irna.ir
+- id: metro
+  name: Metro
+  context: UK, tabloid
+  group: United Kingdom
+  standing: true
+  letter: M
+  color: '#000000'
+  logo: metro.png
+  hosts:
+  - metro.co.uk
+- id: express
+  name: Daily Express
+  context: UK, tabloid
+  group: United Kingdom
+  standing: true
+  letter: E
+  color: '#e4012b'
+  logo: express.png
+  hosts:
+  - express.co.uk
