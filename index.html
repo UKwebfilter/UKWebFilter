@@ -6,13 +6,14 @@ title: Natter
 {% assign latest = site.posts.first %}
 
 {% if latest %}
-<article class="edition" id="edition">
+<article class="edition" id="edition" data-edition-url="{{ latest.url | relative_url }}">
   <header class="edition-head">
     <p class="eyebrow">Latest edition</p>
     <h1>{{ latest.date | date: "%-d %B %Y" }}</h1>
     {% include edition-banner.html post=latest %}
   </header>
-  <div class="edition-body">
+  <div id="home-front" class="home-front" hidden></div>
+  <div class="edition-body" id="home-edition-body">
     {{ latest.content }}
     {% include share.html url=latest.url date=latest.date %}
   </div>
