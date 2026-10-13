@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T05:49:17Z",
+  "generated_at": "2026-10-13T07:34:35Z",
   "method": "Per edition: mean of that outlet Focus scores that day. Overall average: mean of day-means across editions where the outlet appears. Latest: day-mean on the most recent edition day the outlet was scored.",
   "editions": [
     "2026-10-06",
@@ -12,7 +12,7 @@
     "2026-10-13"
   ],
   "latest_edition": "2026-10-13",
-  "total_scores": 895,
+  "total_scores": 891,
   "outlet_count": 47,
   "uk_count": 14,
   "international_count": 33,
@@ -40,13 +40,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 75.24,
-      "avg_title": "8.7/10 · High",
+      "avg_title": "8.7/10 Â· High",
       "latest": 8.67,
       "latest_display": "8.7",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 74.77,
-      "latest_title": "8.7/10 · High"
+      "latest_title": "8.7/10 Â· High"
     },
     {
       "id": "abc",
@@ -70,13 +70,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 71.1,
-      "avg_title": "8.2/10 · High",
+      "avg_title": "8.2/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "bbc",
@@ -95,22 +95,22 @@
         "2026-10-10": 8.92,
         "2026-10-11": 8.56,
         "2026-10-12": 8.07,
-        "2026-10-13": 7.8
+        "2026-10-13": 7.92
       },
-      "n_scores": 82,
+      "n_scores": 79,
       "n_days": 8,
-      "avg": 8.15,
+      "avg": 8.16,
       "avg_display": "8.2",
       "avg_class": "meter-h1",
       "avg_band": "High",
-      "avg_fill": 70.22,
-      "avg_title": "8.2/10 · High",
-      "latest": 7.8,
-      "latest_display": "7.8",
+      "avg_fill": 70.35,
+      "avg_title": "8.2/10 Â· High",
+      "latest": 7.92,
+      "latest_display": "7.9",
       "latest_class": "meter-h1",
       "latest_band": "High",
-      "latest_fill": 67.14,
-      "latest_title": "7.8/10 · High"
+      "latest_fill": 68.17,
+      "latest_title": "7.9/10 Â· High"
     },
     {
       "id": "france24",
@@ -138,13 +138,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 70.02,
-      "avg_title": "8.1/10 · High",
+      "avg_title": "8.1/10 Â· High",
       "latest": 7.83,
       "latest_display": "7.8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 67.43,
-      "latest_title": "7.8/10 · High"
+      "latest_title": "7.8/10 Â· High"
     },
     {
       "id": "nbc",
@@ -171,13 +171,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 69.63,
-      "avg_title": "8.1/10 · High",
+      "avg_title": "8.1/10 Â· High",
       "latest": 8.25,
       "latest_display": "8.2",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 71.1,
-      "latest_title": "8.2/10 · High"
+      "latest_title": "8.2/10 Â· High"
     },
     {
       "id": "afp",
@@ -198,13 +198,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.9,
-      "avg_title": "8/10 · High",
+      "avg_title": "8/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "kyivpost",
@@ -225,13 +225,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.9,
-      "avg_title": "8/10 · High",
+      "avg_title": "8/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "rtafrica",
@@ -252,13 +252,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.9,
-      "avg_title": "8/10 · High",
+      "avg_title": "8/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "ap",
@@ -282,13 +282,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.78,
-      "avg_title": "8.0/10 · High",
+      "avg_title": "8.0/10 Â· High",
       "latest": 8.44,
       "latest_display": "8.4",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 72.81,
-      "latest_title": "8.4/10 · High"
+      "latest_title": "8.4/10 Â· High"
     },
     {
       "id": "dw",
@@ -315,13 +315,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.82,
-      "avg_title": "8.0/10 · High",
+      "avg_title": "8.0/10 Â· High",
       "latest": 7.75,
       "latest_display": "7.8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 66.7,
-      "latest_title": "7.8/10 · High"
+      "latest_title": "7.8/10 Â· High"
     },
     {
       "id": "sky",
@@ -346,13 +346,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 68.3,
-      "avg_title": "7.9/10 · High",
+      "avg_title": "7.9/10 Â· High",
       "latest": 7.86,
       "latest_display": "7.9",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 67.64,
-      "latest_title": "7.9/10 · High"
+      "latest_title": "7.9/10 Â· High"
     },
     {
       "id": "alarabiya",
@@ -379,13 +379,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 67.45,
-      "avg_title": "7.8/10 · High",
+      "avg_title": "7.8/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "cbs",
@@ -411,13 +411,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 67.38,
-      "avg_title": "7.8/10 · High",
+      "avg_title": "7.8/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "standard",
@@ -442,13 +442,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 67.29,
-      "avg_title": "7.8/10 · High",
+      "avg_title": "7.8/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "metro",
@@ -470,13 +470,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 66.7,
-      "avg_title": "7.8/10 · High",
+      "avg_title": "7.8/10 Â· High",
       "latest": 7.5,
       "latest_display": "7.5",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 64.5,
-      "latest_title": "7.5/10 · High"
+      "latest_title": "7.5/10 Â· High"
     },
     {
       "id": "wapo",
@@ -502,13 +502,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 66.09,
-      "avg_title": "7.7/10 · High",
+      "avg_title": "7.7/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "cnn",
@@ -536,13 +536,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 65.79,
-      "avg_title": "7.7/10 · High",
+      "avg_title": "7.7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "abc_au",
@@ -568,13 +568,44 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 65.43,
-      "avg_title": "7.6/10 · High",
+      "avg_title": "7.6/10 Â· High",
       "latest": 6.0,
       "latest_display": "6",
       "latest_class": "meter-h2",
       "latest_band": "Med",
       "latest_fill": 51.3,
-      "latest_title": "6/10 · Med"
+      "latest_title": "6/10 Â· Med"
+    },
+    {
+      "id": "nyt",
+      "name": "New York Times",
+      "context": "US, commercial",
+      "group": "International",
+      "letter": "N",
+      "color": "#111111",
+      "logo": null,
+      "latest_day": "2026-10-13",
+      "day_means": {
+        "2026-10-08": 7.0,
+        "2026-10-09": 8.2,
+        "2026-10-10": 6.33,
+        "2026-10-11": 7.71,
+        "2026-10-13": 7.5
+      },
+      "n_scores": 22,
+      "n_days": 5,
+      "avg": 7.35,
+      "avg_display": "7.3",
+      "avg_class": "meter-h1",
+      "avg_band": "High",
+      "avg_fill": 63.18,
+      "avg_title": "7.3/10 Â· High",
+      "latest": 7.5,
+      "latest_display": "7.5",
+      "latest_class": "meter-h1",
+      "latest_band": "High",
+      "latest_fill": 64.5,
+      "latest_title": "7.5/10 Â· High"
     },
     {
       "id": "arabnews",
@@ -601,13 +632,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 62.9,
-      "avg_title": "7.3/10 · High",
+      "avg_title": "7.3/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "cgtn",
@@ -635,44 +666,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 62.58,
-      "avg_title": "7.3/10 · High",
+      "avg_title": "7.3/10 Â· High",
       "latest": 6.75,
       "latest_display": "6.8",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 57.9,
-      "latest_title": "6.8/10 · High"
-    },
-    {
-      "id": "nyt",
-      "name": "New York Times",
-      "context": "US, commercial",
-      "group": "International",
-      "letter": "N",
-      "color": "#111111",
-      "logo": null,
-      "latest_day": "2026-10-13",
-      "day_means": {
-        "2026-10-08": 7.0,
-        "2026-10-09": 8.2,
-        "2026-10-10": 6.33,
-        "2026-10-11": 7.71,
-        "2026-10-13": 7.0
-      },
-      "n_scores": 23,
-      "n_days": 5,
-      "avg": 7.25,
-      "avg_display": "7.2",
-      "avg_class": "meter-h1",
-      "avg_band": "High",
-      "avg_fill": 62.3,
-      "avg_title": "7.2/10 · High",
-      "latest": 7.0,
-      "latest_display": "7",
-      "latest_class": "meter-h2",
-      "latest_band": "High",
-      "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "6.8/10 Â· High"
     },
     {
       "id": "aljazeera",
@@ -700,13 +700,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 60.87,
-      "avg_title": "7.1/10 · High",
+      "avg_title": "7.1/10 Â· High",
       "latest": 7.5,
       "latest_display": "7.5",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 64.5,
-      "latest_title": "7.5/10 · High"
+      "latest_title": "7.5/10 Â· High"
     },
     {
       "id": "guardian",
@@ -734,13 +734,13 @@
       "avg_class": "meter-h1",
       "avg_band": "High",
       "avg_fill": 60.69,
-      "avg_title": "7.1/10 · High",
+      "avg_title": "7.1/10 Â· High",
       "latest": 7.33,
       "latest_display": "7.3",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 63.03,
-      "latest_title": "7.3/10 · High"
+      "latest_title": "7.3/10 Â· High"
     },
     {
       "id": "cnbctv18",
@@ -761,13 +761,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 60.1,
-      "avg_title": "7/10 · High",
+      "avg_title": "7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "iranintl",
@@ -788,13 +788,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 60.1,
-      "avg_title": "7/10 · High",
+      "avg_title": "7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "kyivindependent",
@@ -815,13 +815,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 60.1,
-      "avg_title": "7/10 · High",
+      "avg_title": "7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "smh",
@@ -842,13 +842,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 60.1,
-      "avg_title": "7/10 · High",
+      "avg_title": "7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "times",
@@ -875,13 +875,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 60.1,
-      "avg_title": "7/10 · High",
+      "avg_title": "7/10 Â· High",
       "latest": 8.0,
       "latest_display": "8",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 68.9,
-      "latest_title": "8/10 · High"
+      "latest_title": "8/10 Â· High"
     },
     {
       "id": "channel4",
@@ -906,13 +906,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 58.78,
-      "avg_title": "6.8/10 · High",
+      "avg_title": "6.8/10 Â· High",
       "latest": 7.5,
       "latest_display": "7.5",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 64.5,
-      "latest_title": "7.5/10 · High"
+      "latest_title": "7.5/10 Â· High"
     },
     {
       "id": "independent",
@@ -938,13 +938,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 57.34,
-      "avg_title": "6.7/10 · High",
+      "avg_title": "6.7/10 Â· High",
       "latest": 7.62,
       "latest_display": "7.6",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 65.52,
-      "latest_title": "7.6/10 · High"
+      "latest_title": "7.6/10 Â· High"
     },
     {
       "id": "timesofisrael",
@@ -971,13 +971,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 57.29,
-      "avg_title": "6.7/10 · High",
+      "avg_title": "6.7/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "ynet",
@@ -1003,13 +1003,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 56.43,
-      "avg_title": "6.6/10 · High",
+      "avg_title": "6.6/10 Â· High",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "politicoeu",
@@ -1030,13 +1030,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 54.23,
-      "avg_title": "6.3/10 · High",
+      "avg_title": "6.3/10 Â· High",
       "latest": 6.33,
       "latest_display": "6.3",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 54.23,
-      "latest_title": "6.3/10 · High"
+      "latest_title": "6.3/10 Â· High"
     },
     {
       "id": "telegraph",
@@ -1064,13 +1064,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 54.01,
-      "avg_title": "6.3/10 · High",
+      "avg_title": "6.3/10 Â· High",
       "latest": 6.17,
       "latest_display": "6.2",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 52.77,
-      "latest_title": "6.2/10 · High"
+      "latest_title": "6.2/10 Â· High"
     },
     {
       "id": "jpost",
@@ -1095,13 +1095,13 @@
       "avg_class": "meter-h2",
       "avg_band": "High",
       "avg_fill": 52.03,
-      "avg_title": "6.1/10 · High",
+      "avg_title": "6.1/10 Â· High",
       "latest": 7.5,
       "latest_display": "7.5",
       "latest_class": "meter-h1",
       "latest_band": "High",
       "latest_fill": 64.5,
-      "latest_title": "7.5/10 · High"
+      "latest_title": "7.5/10 Â· High"
     },
     {
       "id": "ft",
@@ -1122,13 +1122,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 51.3,
-      "avg_title": "6/10 · Med",
+      "avg_title": "6/10 Â· Med",
       "latest": 6.0,
       "latest_display": "6",
       "latest_class": "meter-h2",
       "latest_band": "Med",
       "latest_fill": 51.3,
-      "latest_title": "6/10 · Med"
+      "latest_title": "6/10 Â· Med"
     },
     {
       "id": "haaretz",
@@ -1149,13 +1149,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 51.3,
-      "avg_title": "6/10 · Med",
+      "avg_title": "6/10 Â· Med",
       "latest": 6.0,
       "latest_display": "6",
       "latest_class": "meter-h2",
       "latest_band": "Med",
       "latest_fill": 51.3,
-      "latest_title": "6/10 · Med"
+      "latest_title": "6/10 Â· Med"
     },
     {
       "id": "fox",
@@ -1183,13 +1183,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 48.77,
-      "avg_title": "5.7/10 · Med",
+      "avg_title": "5.7/10 Â· Med",
       "latest": 6.4,
       "latest_display": "6.4",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 54.82,
-      "latest_title": "6.4/10 · High"
+      "latest_title": "6.4/10 Â· High"
     },
     {
       "id": "tass",
@@ -1215,13 +1215,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 48.0,
-      "avg_title": "5.6/10 · Med",
+      "avg_title": "5.6/10 Â· Med",
       "latest": 4.5,
       "latest_display": "4.5",
       "latest_class": "meter-h3",
       "latest_band": "Med",
       "latest_fill": 38.1,
-      "latest_title": "4.5/10 · Med"
+      "latest_title": "4.5/10 Â· Med"
     },
     {
       "id": "express",
@@ -1243,13 +1243,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 46.17,
-      "avg_title": "5.4/10 · Med",
+      "avg_title": "5.4/10 Â· Med",
       "latest": 5.33,
       "latest_display": "5.3",
       "latest_class": "meter-h2",
       "latest_band": "Med",
       "latest_fill": 45.43,
-      "latest_title": "5.3/10 · Med"
+      "latest_title": "5.3/10 Â· Med"
     },
     {
       "id": "mirror",
@@ -1277,13 +1277,13 @@
       "avg_class": "meter-h2",
       "avg_band": "Med",
       "avg_fill": 43.88,
-      "avg_title": "5.2/10 · Med",
+      "avg_title": "5.2/10 Â· Med",
       "latest": 7.0,
       "latest_display": "7",
       "latest_class": "meter-h2",
       "latest_band": "High",
       "latest_fill": 60.1,
-      "latest_title": "7/10 · High"
+      "latest_title": "7/10 Â· High"
     },
     {
       "id": "mail",
@@ -1311,13 +1311,13 @@
       "avg_class": "meter-h3",
       "avg_band": "Med",
       "avg_fill": 40.07,
-      "avg_title": "4.7/10 · Med",
+      "avg_title": "4.7/10 Â· Med",
       "latest": 5.14,
       "latest_display": "5.1",
       "latest_class": "meter-h2",
       "latest_band": "Med",
       "latest_fill": 43.76,
-      "latest_title": "5.1/10 · Med"
+      "latest_title": "5.1/10 Â· Med"
     },
     {
       "id": "rt",
@@ -1340,13 +1340,13 @@
       "avg_class": "meter-h3",
       "avg_band": "Med",
       "avg_fill": 39.32,
-      "avg_title": "4.6/10 · Med",
+      "avg_title": "4.6/10 Â· Med",
       "latest": 3.25,
       "latest_display": "3.2",
       "latest_class": "meter-h3",
       "latest_band": "Med",
       "latest_fill": 27.1,
-      "latest_title": "3.2/10 · Med"
+      "latest_title": "3.2/10 Â· Med"
     },
     {
       "id": "sun",
@@ -1373,13 +1373,13 @@
       "avg_class": "meter-h3",
       "avg_band": "Med",
       "avg_fill": 38.15,
-      "avg_title": "4.5/10 · Med",
+      "avg_title": "4.5/10 Â· Med",
       "latest": 4.2,
       "latest_display": "4.2",
       "latest_class": "meter-h3",
       "latest_band": "Med",
       "latest_fill": 35.46,
-      "latest_title": "4.2/10 · Med"
+      "latest_title": "4.2/10 Â· Med"
     },
     {
       "id": "presstv",
@@ -1401,13 +1401,13 @@
       "avg_class": "meter-h3",
       "avg_band": "Med",
       "avg_fill": 29.3,
-      "avg_title": "3.5/10 · Med",
+      "avg_title": "3.5/10 Â· Med",
       "latest": 4.33,
       "latest_display": "4.3",
       "latest_class": "meter-h3",
       "latest_band": "Med",
       "latest_fill": 36.63,
-      "latest_title": "4.3/10 · Med"
+      "latest_title": "4.3/10 Â· Med"
     },
     {
       "id": "irna",
@@ -1430,13 +1430,13 @@
       "avg_class": "meter-h4",
       "avg_band": "Low",
       "avg_fill": 24.9,
-      "avg_title": "3/10 · Low",
+      "avg_title": "3/10 Â· Low",
       "latest": 3.0,
       "latest_display": "3",
       "latest_class": "meter-h4",
       "latest_band": "Low",
       "latest_fill": 24.9,
-      "latest_title": "3/10 · Low"
+      "latest_title": "3/10 Â· Low"
     },
     {
       "id": "tehran",
@@ -1463,13 +1463,13 @@
       "avg_class": "meter-h4",
       "avg_band": "Low",
       "avg_fill": 21.55,
-      "avg_title": "2.6/10 · Low",
+      "avg_title": "2.6/10 Â· Low",
       "latest": 2.0,
       "latest_display": "2",
       "latest_class": "meter-h4",
       "latest_band": "Low",
       "latest_fill": 16.1,
-      "latest_title": "2/10 · Low"
+      "latest_title": "2/10 Â· Low"
     }
   ]
 }
