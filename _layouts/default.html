@@ -33,10 +33,10 @@
   <meta name="twitter:description" content="{{ page_description | escape }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261009b">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v=20261013a">
   {% feed_meta %}
 </head>
-<body>
+<body{% if page.url == "/" or page.url == "/index.html" %} class="home"{% endif %}>
   <a class="skip" href="#main">Skip to content</a>
   {% include header.html %}
   <main id="main">
@@ -58,6 +58,7 @@
     {% endfor %}
   ]
   </script>
-  <script src="{{ '/assets/js/edition.js' | relative_url }}?v=20261009b"></script>
+  {% if page.url == "/" or page.url == "/index.html" %}<script src="{{ '/assets/js/home.js' | relative_url }}?v=20261013a"></script>{% endif %}
+  <script src="{{ '/assets/js/edition.js' | relative_url }}?v=20261013a"></script>
 </body>
 </html>
