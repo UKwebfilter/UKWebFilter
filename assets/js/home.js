@@ -147,7 +147,7 @@
     if (!name || pre.indexOf(name) !== 0) {
       name = pre.split(",")[0].trim() || name;
     }
-    return { name: name, kind: kind, focus: clamp(fm[1]), note: fm[2].trim() };
+    return { name: name, kind: kind, focus: clamp(fm[1]), note: fm[2].trim(), href: a ? a.getAttribute("href") : "" };
   }
 
   /* 2. Stories from "## n." headings */
@@ -210,10 +210,70 @@
     return k === "uk" ? "UK" : k === "world" ? "World" : k === "lead" ? "World lead" : s.section;
   }
 
+  /* Outlet logos: reuse the local /assets/logos files listed in
+     _data/outlets.yml (emitted as #natter-outlets by the layout). Match by
+     link host first, like edition.js, then by normalised name. */
+  var OUTLETS = [];
+  try {
+    var oj = document.getElementById("natter-outlets");
+    OUTLETS = oj ? JSON.parse(oj.textContent) || [] : [];
+  } catch (e) { OUTLETS = []; }
+
+  var NAME_ALIAS = {
+    "mail on sunday": "daily mail", "mail online": "daily mail", "dailymail": "daily mail", "mail": "daily mail",
+    "sunday times": "times", "sunday telegraph": "telegraph", "observer": "guardian",
+    "bbc news": "bbc", "express": "daily express", "sunday express": "daily express",
+    "mirror": "daily mirror", "fox": "fox news", "france24": "france 24", "ria": "ria novosti",
+    "abc": "abc news", "folha": "folha de s.paulo", "al jazeera english": "al jazeera"
+  };
+
+  function normName(n) {
+    n = String(n || "").toLowerCase().replace(/[\u2018\u2019']/g, "").replace(/&/g, " and ")
+      .replace(/\.(com|co\.uk)\b/g, "").replace(/\s+/g, " ").trim().replace(/^the /, "");
+    return NAME_ALIAS[n] || n;
+  }
+
+  function findOutlet(o) {
+    var host = "";
+    if (o.href) {
+      try { host = new URL(o.href, window.location.href).hostname.toLowerCase().replace(/^www\./, ""); } catch (e) { host = ""; }
+    }
+    var best = null, bestLen = -1, i, j;
+    if (host) {
+      for (i = 0; i < OUTLETS.length; i++) {
+        var hs = OUTLETS[i].hosts || [];
+        for (j = 0; j < hs.length; j++) {
+          var nd = String(hs[j]).toLowerCase().replace(/^www\./, "");
+          if (nd && (host === nd || host.slice(-nd.length - 1) === "." + nd) && nd.length > bestLen) {
+            best = OUTLETS[i]; bestLen = nd.length;
+          }
+        }
+      }
+      if (best) return best;
+    }
+    var key = normName(o.name);
+    for (i = 0; i < OUTLETS.length; i++) if (normName(OUTLETS[i].name) === key) return OUTLETS[i];
+    return null;
+  }
+
   function outletCard(o) {
     var c = el("div", "hf-ocard");
     var head = el("div", "hf-ohead");
-    head.appendChild(el("span", "hf-oname", o.name));
+    var nm = el("span", "hf-oname");
+    var ref = findOutlet(o);
+    if (ref && ref.logo) {
+      var img = document.createElement("img");
+      img.className = "hf-ologo";
+      img.src = ref.logo;
+      img.alt = "";
+      img.setAttribute("aria-hidden", "true");
+      img.decoding = "async";
+      img.addEventListener("error", function () { if (img.parentNode) img.parentNode.removeChild(img); });
+      nm.appendChild(img);
+      c.setAttribute("data-logo", "1");
+    }
+    nm.appendChild(el("span", "hf-otxt", o.name));
+    head.appendChild(nm);
     if (o.focus != null) head.appendChild(meter(o.focus, "Focus", true));
     c.appendChild(head);
     if (o.note) c.appendChild(el("p", null, o.note));
