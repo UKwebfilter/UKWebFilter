@@ -58,35 +58,9 @@
     return e;
   }
 
-  function meter(n, label, small) {
-    var w = el("span", "hf-meter hf-h" + heat(n) + (small ? " hf-meter-sm" : ""));
-    w.setAttribute("role", "img");
-    w.setAttribute("aria-label", label + " " + n + " out of 10");
-    var track = el("span", "hf-track");
-    var fill = el("span", "hf-fill");
-    fill.style.width = Math.max(6, n * 10) + "%";
-    track.appendChild(fill);
-    w.appendChild(track);
-    w.appendChild(el("b", null, String(n)));
-    return w;
-  }
-
-  function stat(label, node) {
-    var s = el("span", "hf-stat");
-    s.appendChild(el("span", "hf-lbl", label));
-    s.appendChild(node);
-    return s;
-  }
-
   function pill(n, suffix) {
     var d = divergence(n);
     return el("span", "hf-pill " + d.cls, d.label + (suffix || ""));
-  }
-
-  function readMore(id) {
-    var a = el("a", "hf-more", "Read the full story");
-    a.href = editionUrl + "#" + encodeURIComponent(id).replace(/%2D/g, "-");
-    return a;
   }
 
   /* 1. Section tables: anchor id -> { title, section, ukAttention } */
@@ -256,31 +230,6 @@
     return null;
   }
 
-  function outletCard(o) {
-    var c = el("div", "hf-ocard");
-    var head = el("div", "hf-ohead");
-    var nm = el("span", "hf-oname");
-    var ref = findOutlet(o);
-    if (ref && ref.logo) {
-      var img = document.createElement("img");
-      img.className = "hf-ologo";
-      img.src = ref.logo;
-      img.alt = "";
-      img.setAttribute("aria-hidden", "true");
-      img.decoding = "async";
-      img.addEventListener("error", function () { if (img.parentNode) img.parentNode.removeChild(img); });
-      nm.appendChild(img);
-      c.setAttribute("data-logo", "1");
-    }
-    nm.appendChild(el("span", "hf-otxt", o.name));
-    head.appendChild(nm);
-    if (o.focus != null) head.appendChild(meter(o.focus, "Focus", true));
-    c.appendChild(head);
-    if (o.note) c.appendChild(el("p", null, o.note));
-    if (o.kind) c.appendChild(el("span", "hf-okind", o.kind));
-    return c;
-  }
-
   function byFocus(list) {
     var idx = list.map(function (o, i) { return { o: o, i: i }; });
     idx.sort(function (x, y) {
@@ -290,75 +239,240 @@
     return idx.map(function (x) { return x.o; });
   }
 
-  function grid(list) {
-    var g = el("div", "hf-ogrid");
-    for (var i = 0; i < list.length; i++) g.appendChild(outletCard(list[i]));
+  /* Local story tiles from the edition front matter (banner_tiles), emitted
+     by index.html as #home-tiles. tile-NN.webp belongs to story NN. */
+  var TILES = {};
+  try {
+    var tj = document.getElementById("home-tiles");
+    var tl = tj ? JSON.parse(tj.textContent) || [] : [];
+    for (var ti = 0; ti < tl.length; ti++) {
+      var tm = String(tl[ti]).match(/tile-(\d+)\.\w+$/);
+      if (tm) TILES[parseInt(tm[1], 10)] = tl[ti];
+    }
+  } catch (e) { TILES = {}; }
+
+  function href(s) {
+    return editionUrl + "#" + encodeURIComponent(s.id).replace(/%2D/g, "-");
+  }
+
+  function link(s, cls, text) {
+    var a = el("a", cls, text);
+    a.href = href(s);
+    return a;
+  }
+
+  function tileImg(s, cls, eager) {
+    var src = TILES[s.n];
+    if (!src) return null;
+    var img = document.createElement("img");
+    img.className = cls;
+    img.src = src;
+    img.alt = "";
+    img.width = 308;
+    img.height = 272;
+    img.decoding = "async";
+    if (!eager) img.loading = "lazy";
+    img.addEventListener("error", function () { if (img.parentNode) img.parentNode.removeChild(img); });
+    return img;
+  }
+
+  function nmeter(n, label) {
+    var w = el("span", "nf-meter hf-h" + heat(n));
+    w.setAttribute("role", "img");
+    w.setAttribute("aria-label", label + " " + n + " out of 10");
+    w.appendChild(el("span", "nf-ml", label));
+    var bar = el("span", "nf-bar");
+    var fill = el("i");
+    fill.style.width = Math.max(6, n * 10) + "%";
+    bar.appendChild(fill);
+    w.appendChild(bar);
+    w.appendChild(el("b", null, n + "/10"));
+    return w;
+  }
+
+  function metrics(s) {
+    var m = el("div", "nf-metrics");
+    m.appendChild(nmeter(s.neu, "Neutrality"));
+    m.appendChild(pill(s.neu, " divergence"));
+    return m;
+  }
+
+  function headline(tag, s) {
+    var h = el(tag);
+    h.appendChild(link(s, null, s.title));
+    return h;
+  }
+
+  function summary(s, cls) {
+    return s.paras[0] ? el("p", cls || "nf-sum", firstSentence(s.paras[0])) : null;
+  }
+
+  function add(parent, child) { if (child) parent.appendChild(child); return parent; }
+
+  function ocard(o, withNote) {
+    var c = el("div", "nf-oc");
+    var ref = findOutlet(o);
+    if (ref && ref.logo) {
+      var img = document.createElement("img");
+      img.className = "nf-ologo";
+      img.src = ref.logo;
+      img.alt = "";
+      img.setAttribute("aria-hidden", "true");
+      img.decoding = "async";
+      img.addEventListener("error", function () { if (img.parentNode) img.parentNode.removeChild(img); });
+      c.appendChild(img);
+      c.setAttribute("data-logo", "1");
+    } else {
+      c.appendChild(el("span", "nf-olt", (o.name || "?").charAt(0)));
+    }
+    c.appendChild(el("span", "nf-on", o.name));
+    if (o.focus != null) c.appendChild(el("span", "nf-fs hf-h" + heat(o.focus), "Focus " + o.focus));
+    if (withNote && o.note) c.appendChild(el("p", "nf-onote", o.note));
+    return c;
+  }
+
+  function ogrid(list, withNote) {
+    var g = el("div", "nf-ocs");
+    for (var i = 0; i < list.length; i++) g.appendChild(ocard(list[i], withNote));
     return g;
   }
 
-  function hero(s) {
-    var a = el("article", "hf-hero");
-    a.appendChild(el("p", "hf-kicker", kicker(s) + " \u00b7 Lead story"));
-    a.appendChild(el("h2", null, s.title));
-    if (s.paras[0]) a.appendChild(el("p", "hf-dek", firstSentence(s.paras[0])));
-    var info = el("div", "hf-info");
-    var row = el("div", "hf-info-row");
-    row.appendChild(stat("Neutrality", meter(s.neu, "Neutrality")));
-    row.appendChild(stat("Framing divergence", pill(s.neu)));
-    info.appendChild(row);
-    if (s.neuText) info.appendChild(el("p", "hf-info-note", s.neuText));
-    a.appendChild(info);
-    if (s.outlets.length) {
-      a.appendChild(el("h3", "hf-sub", "How it was framed"));
-      var sorted = byFocus(s.outlets);
-      var rest = [];
-      if (sorted.length <= 4) {
-        a.appendChild(grid(sorted));
-      } else {
-        var top = sorted.slice(0, 2), low = sorted.slice(sorted.length - 2);
-        rest = sorted.slice(2, sorted.length - 2);
-        var split = el("div", "hf-osplit");
-        split.appendChild(el("p", "hf-lbl", "Highest Focus"));
-        split.appendChild(grid(top));
-        split.appendChild(el("p", "hf-lbl", "Lowest Focus"));
-        split.appendChild(grid(low));
-        a.appendChild(split);
-      }
-      if (rest.length) {
-        var d = el("details", "hf-all");
-        var sum = el("summary", null, "See all " + s.outlets.length + " outlets");
-        d.appendChild(sum);
-        d.appendChild(grid(rest));
-        d.addEventListener("toggle", function () {
-          sum.textContent = d.open ? "Show fewer outlets" : "See all " + s.outlets.length + " outlets";
-        });
-        a.appendChild(d);
-      }
+  function framing(s) {
+    var f = el("div", "nf-framed");
+    f.appendChild(el("h4", "nf-boxh", "How it was framed"));
+    var sorted = byFocus(s.outlets);
+    if (sorted.length <= 4) {
+      f.appendChild(ogrid(sorted, false));
+    } else {
+      var split = el("div", "nf-fsplit");
+      var hi = el("div"), lo = el("div");
+      hi.appendChild(el("p", "nf-fl", "Highest Focus"));
+      hi.appendChild(ogrid(sorted.slice(0, 2), false));
+      lo.appendChild(el("p", "nf-fl", "Lowest Focus"));
+      lo.appendChild(ogrid(sorted.slice(sorted.length - 2), false));
+      split.appendChild(hi);
+      split.appendChild(lo);
+      f.appendChild(split);
+      var d = el("details", "nf-all");
+      var sum = el("summary", null, "See all " + s.outlets.length + " outlets");
+      d.appendChild(sum);
+      var all = ogrid(s.outlets, true);
+      all.className = "nf-ocs nf-ocs-all";
+      d.appendChild(all);
+      d.addEventListener("toggle", function () {
+        sum.textContent = d.open ? "Show fewer outlets" : "See all " + s.outlets.length + " outlets";
+      });
+      f.appendChild(d);
     }
-    var foot = el("p", "hf-readrow");
-    foot.appendChild(readMore(s.id));
-    a.appendChild(foot);
+    return f;
+  }
+
+  function leadStory(s) {
+    var a = el("article", "nf-lead");
+    var im = tileImg(s, null, true);
+    if (im) {
+      var ia = link(s, "nf-limg");
+      ia.setAttribute("tabindex", "-1");
+      ia.setAttribute("aria-hidden", "true");
+      ia.appendChild(im);
+      a.appendChild(ia);
+    } else {
+      a.className += " nf-noimg";
+    }
+    var t = el("div", "nf-ltext");
+    t.appendChild(el("p", "nf-kicker", kicker(s)));
+    t.appendChild(headline("h2", s));
+    add(t, summary(s, "nf-lsum"));
+    t.appendChild(metrics(s));
+    t.appendChild(link(s, "nf-more", "Read the full story"));
+    a.appendChild(t);
     return a;
+  }
+
+  function sideStory(s) {
+    var a = el("article", "nf-side");
+    var im = tileImg(s, null, true);
+    if (im) {
+      var ia = link(s, "nf-simg");
+      ia.setAttribute("tabindex", "-1");
+      ia.setAttribute("aria-hidden", "true");
+      ia.appendChild(im);
+      a.appendChild(ia);
+    } else {
+      a.className += " nf-noimg";
+    }
+    var t = el("div");
+    t.appendChild(el("p", "nf-kicker", kicker(s)));
+    t.appendChild(headline("h3", s));
+    add(t, summary(s));
+    t.appendChild(nmeter(s.neu, "Neutrality"));
+    a.appendChild(t);
+    return a;
+  }
+
+  function dividedBox(stories) {
+    var idx = stories.map(function (s, i) { return { s: s, i: i }; });
+    idx.sort(function (x, y) { return x.s.neu - y.s.neu || x.i - y.i; });
+    var box = el("div", "nf-divbox");
+    box.appendChild(el("h4", "nf-boxh", "Most divided today"));
+    var ol = el("ol");
+    for (var i = 0; i < Math.min(3, idx.length); i++) {
+      var s = idx[i].s;
+      var li = el("li");
+      li.appendChild(el("span", "nf-num", String(i + 1)));
+      li.appendChild(link(s, null, s.title));
+      li.appendChild(el("span", "nf-sc hf-h" + heat(s.neu), s.neu + "/10"));
+      ol.appendChild(li);
+    }
+    box.appendChild(ol);
+    box.appendChild(el("p", "nf-dnote", "Lowest Neutrality scores"));
+    return box;
   }
 
   function card(s) {
-    var a = el("article", "hf-card");
-    a.appendChild(el("p", "hf-kicker", kicker(s)));
-    a.appendChild(el("h3", null, s.title));
-    if (s.paras[0]) a.appendChild(el("p", "hf-sum", firstSentence(s.paras[0])));
-    var meta = el("div", "hf-cmeta");
-    meta.appendChild(stat("Neutrality", meter(s.neu, "Neutrality", true)));
-    meta.appendChild(pill(s.neu, " divergence"));
-    if (sectionKey(s.section) === "lead" && s.ua != null) meta.appendChild(stat("UK attention", meter(s.ua, "UK attention", true)));
-    a.appendChild(meta);
-    a.appendChild(readMore(s.id));
+    var textOnly = !TILES[s.n];
+    var a = el("article", "nf-card" + (textOnly ? " nf-textonly" : ""));
+    if (!textOnly) {
+      var ia = link(s, "nf-cimg");
+      ia.setAttribute("tabindex", "-1");
+      ia.setAttribute("aria-hidden", "true");
+      ia.appendChild(tileImg(s));
+      a.appendChild(ia);
+    }
+    var body = el("div", "nf-cbody");
+    if (textOnly && sectionKey(s.section) === "lead" && s.ua != null) {
+      var att = el("div", "nf-att");
+      att.appendChild(nmeter(s.ua, "UK attention"));
+      body.appendChild(att);
+    }
+    body.appendChild(el("p", "nf-kicker", kicker(s)));
+    body.appendChild(headline("h3", s));
+    add(body, summary(s));
+    body.appendChild(metrics(s));
+    body.appendChild(link(s, "nf-more", "Read the full story"));
+    a.appendChild(body);
     return a;
   }
 
+  /* Cards sit on a 6-column grid so every row is full:
+     n % 3 == 0 -> rows of 3; n % 3 == 2 -> first row of 2 wide cards;
+     n % 3 == 1 -> first card spans the full row. */
+  function cardGrid(list) {
+    var g = el("div", "nf-grid");
+    var r = list.length % 3;
+    for (var i = 0; i < list.length; i++) {
+      var c = card(list[i]);
+      if (r === 1 && i === 0) c.className += " nf-span6";
+      else if (r === 2 && i < 2) c.className += " nf-span3";
+      g.appendChild(c);
+    }
+    return g;
+  }
+
   function sectionIntro(name) {
-    var tables = src.querySelectorAll("p > strong");
-    for (var i = 0; i < tables.length; i++) {
-      var p = tables[i].parentNode;
+    var ps = src.querySelectorAll("p > strong");
+    for (var i = 0; i < ps.length; i++) {
+      var p = ps[i].parentNode;
       if (txt(p) !== name) continue;
       var next = p.nextElementSibling;
       if (next && next.tagName === "P" && !next.querySelector("strong")) return txt(next);
@@ -366,41 +480,64 @@
     return "";
   }
 
+  function ticker(stories) {
+    var inner = document.querySelector(".masthead-inner");
+    if (!inner) return null;
+    var t = el("div", "nf-ticker");
+    t.setAttribute("aria-label", "Latest headlines");
+    t.appendChild(el("span", "nf-tl", "Latest"));
+    var ul = el("ul");
+    for (var i = 0; i < stories.length; i++) {
+      var li = el("li");
+      li.appendChild(link(stories[i], null, stories[i].title));
+      ul.appendChild(li);
+    }
+    t.appendChild(ul);
+    inner.appendChild(t);
+    return t;
+  }
+
   function build() {
     var stories = readStories(readTables());
-    if (!stories.length) return false;
+    if (stories.length < 4) return false;
     var lead = stories[0];
     var frag = document.createDocumentFragment();
-    frag.appendChild(hero(lead));
 
-    var order = [];
-    var groups = {};
-    for (var i = 1; i < stories.length; i++) {
-      var s = stories[i];
-      if (!groups[s.section]) {
-        groups[s.section] = [];
-        order.push(s.section);
-      }
+    /* Top: lead story with its framing underneath (left), right column
+       with the next two stories and the most divided box. */
+    var top = el("section", "nf-top");
+    var main = el("div", "nf-main");
+    main.appendChild(leadStory(lead));
+    if (lead.outlets.length) main.appendChild(framing(lead));
+    top.appendChild(main);
+    var rcol = el("aside", "nf-rcol");
+    rcol.setAttribute("aria-label", "More top stories");
+    var side = stories.slice(1, 3);
+    for (var i = 0; i < side.length; i++) rcol.appendChild(sideStory(side[i]));
+    rcol.appendChild(dividedBox(stories));
+    top.appendChild(rcol);
+    frag.appendChild(top);
+
+    var order = [], groups = {};
+    for (var j = 3; j < stories.length; j++) {
+      var s = stories[j];
+      if (!groups[s.section]) { groups[s.section] = []; order.push(s.section); }
       groups[s.section].push(s);
     }
-    if (order.length) {
-      frag.appendChild(el("h2", "hf-morehead", "More stories"));
-      for (var g = 0; g < order.length; g++) {
-        var sec = el("section", "hf-sec");
-        sec.appendChild(el("h2", "hf-sech", order[g]));
-        if (sectionKey(order[g]) === "lead") {
-          var intro = sectionIntro(order[g]);
-          if (intro) sec.appendChild(el("p", "hf-secintro", intro));
-        }
-        var cg = el("div", "hf-cgrid");
-        for (var c = 0; c < groups[order[g]].length; c++) cg.appendChild(card(groups[order[g]][c]));
-        sec.appendChild(cg);
-        frag.appendChild(sec);
+    for (var g = 0; g < order.length; g++) {
+      var sec = el("section", "nf-sec");
+      sec.appendChild(el("h2", "nf-secbar", order[g]));
+      if (sectionKey(order[g]) === "lead") {
+        var intro = sectionIntro(order[g]);
+        if (intro) sec.appendChild(el("p", "nf-intro", intro));
       }
+      sec.appendChild(cardGrid(groups[order[g]]));
+      frag.appendChild(sec);
     }
     front.appendChild(frag);
     var share = src.querySelector(".share-row");
     if (share) front.appendChild(share);
+    ticker(stories);
     return true;
   }
 
@@ -412,6 +549,8 @@
     }
   } catch (err) {
     while (front.firstChild) front.removeChild(front.firstChild);
+    var tk = document.querySelector(".nf-ticker");
+    if (tk) tk.parentNode.removeChild(tk);
     front.hidden = true;
     src.hidden = false;
   }
