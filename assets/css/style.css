@@ -1459,3 +1459,7 @@ img.outlet-logo {
   .hf-dek { font-size: 1rem; }
   .hf-cgrid, .hf-ogrid { grid-template-columns: 1fr; }
 }
+.hf-osplit > .hf-lbl { margin: 0 0 8px; }
+.hf-osplit > .hf-ogrid + .hf-lbl { margin-top: 16px; }
+.hf-osplit .hf-ogrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 600px) { .hf-osplit .hf-ogrid { grid-template-columns: 1fr; } }
