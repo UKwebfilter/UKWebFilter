@@ -10,8 +10,8 @@ title: Natter
   <header class="edition-head">
     <p class="eyebrow">Latest edition</p>
     <h1>{{ latest.date | date: "%-d %B %Y" }}</h1>
-    {% include edition-banner.html post=latest %}
   </header>
+  <script id="home-tiles" type="application/json">[{% for tile in latest.banner_tiles %}{{ tile | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
   <div id="home-front" class="home-front" hidden></div>
   <div class="edition-body" id="home-edition-body">
     {{ latest.content }}
