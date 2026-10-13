@@ -206,6 +206,7 @@
   standing: false
   letter: I
   color: '#e11b22'
+  logo: independent.png
   hosts:
   - independent.co.uk
 - id: mirror
@@ -215,6 +216,7 @@
   standing: false
   letter: M
   color: '#e20e17'
+  logo: mirror.png
   hosts:
   - mirror.co.uk
 - id: standard
@@ -224,6 +226,7 @@
   standing: false
   letter: E
   color: '#111111'
+  logo: standard.png
   hosts:
   - standard.co.uk
 - id: reuters
@@ -233,6 +236,7 @@
   standing: false
   letter: R
   color: '#ff8000'
+  logo: reuters.png
   hosts:
   - reuters.com
 - id: ap
@@ -242,6 +246,7 @@
   standing: false
   letter: A
   color: '#ff322e'
+  logo: ap.png
   hosts:
   - apnews.com
 - id: afp
@@ -251,6 +256,7 @@
   standing: false
   letter: A
   color: '#1a1a1a'
+  logo: afp.png
   hosts:
   - afp.com
 - id: dw
@@ -260,6 +266,7 @@
   standing: false
   letter: D
   color: '#0088ce'
+  logo: dw.png
   hosts:
   - dw.com
 - id: smh
@@ -269,6 +276,7 @@
   standing: false
   letter: S
   color: '#000000'
+  logo: smh.png
   hosts:
   - smh.com.au
 - id: abc_au
@@ -278,6 +286,7 @@
   standing: false
   letter: A
   color: '#000000'
+  logo: abc_au.png
   hosts:
   - abc.net.au
 - id: alarabiya
@@ -287,6 +296,7 @@
   standing: false
   letter: A
   color: '#e30613'
+  logo: alarabiya.png
   hosts:
   - alarabiya.net
   - english.alarabiya.net
@@ -297,6 +307,7 @@
   standing: false
   letter: A
   color: '#1a1a1a'
+  logo: arabnews.png
   hosts:
   - arabnews.com
 - id: kyivpost
@@ -306,6 +317,7 @@
   standing: false
   letter: K
   color: '#c41230'
+  logo: kyivpost.png
   hosts:
   - kyivpost.com
 - id: kyivindependent
@@ -315,6 +327,7 @@
   standing: false
   letter: K
   color: '#0057b7'
+  logo: kyivindependent.png
   hosts:
   - kyivindependent.com
 - id: nbc
@@ -324,6 +337,7 @@
   standing: false
   letter: N
   color: '#111111'
+  logo: nbc.png
   hosts:
   - nbcnews.com
 - id: wapo
@@ -333,6 +347,7 @@
   standing: false
   letter: W
   color: '#111111'
+  logo: wapo.png
   hosts:
   - washingtonpost.com
 - id: timesofisrael
@@ -342,6 +357,7 @@
   standing: false
   letter: T
   color: '#1a5276'
+  logo: timesofisrael.png
   hosts:
   - timesofisrael.com
 - id: jpost
@@ -351,6 +367,7 @@
   standing: false
   letter: J
   color: '#1a1a1a'
+  logo: jpost.png
   hosts:
   - jpost.com
 - id: tass
@@ -360,6 +377,7 @@
   standing: false
   letter: T
   color: '#c41230'
+  logo: tass.png
   hosts:
   - tass.com
 - id: iranintl
@@ -369,6 +387,7 @@
   standing: false
   letter: I
   color: '#8e2f2a'
+  logo: iranintl.png
   hosts:
   - iranintl.com
 - id: cnbctv18
@@ -378,6 +397,7 @@
   standing: false
   letter: C
   color: '#005bac'
+  logo: cnbctv18.png
   hosts:
   - cnbctv18.com
 - id: rtafrica
@@ -387,6 +407,7 @@
   standing: false
   letter: R
   color: '#75c7eb'
+  logo: rtafrica.png
   hosts:
   - rtrunews.com
 - id: nyt
@@ -396,6 +417,7 @@
   standing: false
   letter: N
   color: '#111111'
+  logo: nyt.png
   hosts:
   - nytimes.com
 - id: cbs
@@ -405,6 +427,7 @@
   standing: false
   letter: C
   color: '#0a2c5a'
+  logo: cbs.png
   hosts:
   - cbsnews.com
 - id: rt
@@ -414,6 +437,7 @@
   standing: false
   letter: R
   color: '#75c7eb'
+  logo: rt.png
   hosts:
   - rt.com
 - id: politicoeu
@@ -423,6 +447,7 @@
   standing: false
   letter: P
   color: '#d4202a'
+  logo: politicoeu.png
   hosts:
   - politico.eu
 - id: ft
@@ -432,6 +457,7 @@
   standing: false
   letter: F
   color: '#cc785c'
+  logo: ft.png
   hosts:
   - ft.com
 - id: lemonde
@@ -441,6 +467,7 @@
   standing: false
   letter: M
   color: '#111111'
+  logo: lemonde.png
   hosts:
   - lemonde.fr
 - id: haaretz
@@ -450,6 +477,7 @@
   standing: false
   letter: H
   color: '#0b4f6c'
+  logo: haaretz.png
   hosts:
   - haaretz.com
 - id: timesofindia
@@ -459,6 +487,7 @@
   standing: false
   letter: T
   color: '#a51c30'
+  logo: timesofindia.png
   hosts:
   - timesofindia.indiatimes.com
   - indiatimes.com
@@ -469,6 +498,7 @@
   standing: false
   letter: S
   color: '#001246'
+  logo: scmp.png
   hosts:
   - scmp.com
 - id: presstv
@@ -478,6 +508,7 @@
   standing: false
   letter: P
   color: '#b5121b'
+  logo: presstv.png
   hosts:
   - presstv.ir
   - presstv.co.uk
