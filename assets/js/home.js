@@ -221,6 +221,15 @@
     return c;
   }
 
+  function byFocus(list) {
+    var idx = list.map(function (o, i) { return { o: o, i: i }; });
+    idx.sort(function (x, y) {
+      var fx = x.o.focus == null ? -1 : x.o.focus, fy = y.o.focus == null ? -1 : y.o.focus;
+      return fy - fx || x.i - y.i;
+    });
+    return idx.map(function (x) { return x.o; });
+  }
+
   function grid(list) {
     var g = el("div", "hf-ogrid");
     for (var i = 0; i < list.length; i++) g.appendChild(outletCard(list[i]));
@@ -241,12 +250,25 @@
     a.appendChild(info);
     if (s.outlets.length) {
       a.appendChild(el("h3", "hf-sub", "How it was framed"));
-      a.appendChild(grid(s.outlets.slice(0, 4)));
-      if (s.outlets.length > 4) {
+      var sorted = byFocus(s.outlets);
+      var rest = [];
+      if (sorted.length <= 4) {
+        a.appendChild(grid(sorted));
+      } else {
+        var top = sorted.slice(0, 2), low = sorted.slice(sorted.length - 2);
+        rest = sorted.slice(2, sorted.length - 2);
+        var split = el("div", "hf-osplit");
+        split.appendChild(el("p", "hf-lbl", "Highest Focus"));
+        split.appendChild(grid(top));
+        split.appendChild(el("p", "hf-lbl", "Lowest Focus"));
+        split.appendChild(grid(low));
+        a.appendChild(split);
+      }
+      if (rest.length) {
         var d = el("details", "hf-all");
         var sum = el("summary", null, "See all " + s.outlets.length + " outlets");
         d.appendChild(sum);
-        d.appendChild(grid(s.outlets.slice(4)));
+        d.appendChild(grid(rest));
         d.addEventListener("toggle", function () {
           sum.textContent = d.open ? "Show fewer outlets" : "See all " + s.outlets.length + " outlets";
         });
