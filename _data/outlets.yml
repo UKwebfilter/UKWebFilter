@@ -542,3 +542,30 @@
   logo: express.png
   hosts:
   - express.co.uk
+- id: belfasttelegraph
+  name: Belfast Telegraph
+  context: UK, commercial
+  group: United Kingdom
+  standing: false
+  letter: B
+  color: '#00205b'
+  hosts:
+  - belfasttelegraph.co.uk
+- id: newsletter
+  name: News Letter
+  context: UK, commercial
+  group: United Kingdom
+  standing: false
+  letter: N
+  color: '#1a1a1a'
+  hosts:
+  - newsletter.co.uk
+- id: rte
+  name: RTÉ
+  context: Ireland, public-service
+  group: International
+  standing: false
+  letter: R
+  color: '#0b6e4f'
+  hosts:
+  - rte.ie
